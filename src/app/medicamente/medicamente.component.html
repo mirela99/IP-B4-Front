@@ -1,0 +1,96 @@
+
+<header >
+  <app-menu-bar ></app-menu-bar>
+</header>
+<body>
+<div class="container">
+
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Selectati din optiunile de mai jos  </h2>
+    <br>
+    <section class="example-section">
+      <label class="example-margin">Categorie Medicament:</label>
+      <mat-select  matNativeControl [(ngModel)]="tipCautat" (ngModelChange)="filtruMedicamente()">
+        <mat-option class="example-margin" value="sirop">Sirop</mat-option>
+        <mat-option class="example-margin" value="comprimate">Comprimate</mat-option>
+        <mat-option class="example-margin" value="injectabil">Injectabil</mat-option>
+        <mat-option class="example-margin" value="crema">Crema</mat-option>
+        <mat-option class="example-margin" value="picaturi">Picaturi</mat-option>
+        <mat-option class="example-margin" value="plic cu pulbere">Plic cu pulbere</mat-option>
+        <mat-option class="example-margin" value="perfuzie">Perfuzie</mat-option>
+      </mat-select>
+    </section>
+    <br>
+    <section class="example-section">
+      <label class="example-margin">Dupa tipul medicamentelor :</label>
+      <mat-select  matNativeControl [(ngModel)]="categorie" (ngModelChange)="filtruMedicamente()">
+        <mat-option class="example-margin" value="reteta">Reteta</mat-option>
+        <mat-option class="example-margin" value="reteta restrictiva">Reteta restrictiva</mat-option>
+        <mat-option class="example-margin" value="reteta speciala">Reteta speciala</mat-option>
+        <mat-option class="example-margin" value="fara prescriptie">Fara prescriptie</mat-option>
+      </mat-select>
+    </section>
+    <br>
+    <section class="example-section">
+      <label class="example-margin">Dupa Substanta Activa:</label>
+      <mat-select  matNativeControl [(ngModel)]="substanta" (ngModelChange)="filtruMedicamente()">
+        <mat-option class="example-margin" value="Paracetamol">Paracetamol</mat-option>
+        <mat-option class="example-margin" value="Codeina">Codeină</mat-option>
+        <mat-option class="example-margin" value="Butamirat">Butamirat</mat-option>
+        <mat-option class="example-margin" value="Oxeladină">Oxeladină</mat-option>
+        <label for="search1">  Alta Optiune  </label>
+        <input class="form-control" type="search" id="search1" mdbInput [(ngModel)]="substanta" (keyup.enter)="filtruMedicamente()">
+
+      </mat-select>
+    </section>
+<br>
+    <section class="example-section">
+      <label class="example-margin">Clasificare Anatomo Terapeutica Chimica(ATC):</label>
+      <mat-form-field ng-submit="filtruMedicamente()">
+        <mat-label>ATC</mat-label>
+        <mat-select [formControl]="atcControl">
+          <mat-option>-- None --</mat-option>
+          <mat-optgroup *ngFor="let group of atcGroups" [label]="group.name"
+                        [disabled]="group.disabled">
+            <mat-option *ngFor="let category of group.category" [value]="category.value" >
+              {{category.viewValue}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <br>
+    <section class="example-section">
+      <label class="example-margin">Dupa Popularitate:</label>
+      <mat-select matNativeControl [(ngModel)]="popularitate" (ngModelChange)="filtruMedicamente()">
+        <mat-option class="example-margin" value="cunoscute">Cele mai cunoscute</mat-option>
+        <mat-option class="example-margin" value="necunoscute">Cele mai putin cunoscute</mat-option>
+
+      </mat-select>
+    </section>
+
+    <section class="example-section">
+      <label class="example-margin">Ordonare Alfabetica:</label>
+      <mat-select matNativeControl [(ngModel)]="ordonare" (ngModelChange)="filtruMedicamente()">
+        <mat-option class="example-margin" value="1">A-Z</mat-option>
+        <mat-option class="example-margin" value="0">Z-A</mat-option>
+      </mat-select>
+    </section>
+    <br>
+    <section class= "buton-search">
+      <button mat-raised-button color="accent" (click)="search()">Cauta Medicamente</button>
+    </section>
+  </mat-card-content>
+</mat-card>
+</div>
+
+
+
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+</body>
+
+

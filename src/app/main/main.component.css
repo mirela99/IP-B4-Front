@@ -1,0 +1,36 @@
+
+.html{
+  height:100%;
+}
+
+.container {
+  min-height: 100%;
+  margin-top: 70px;
+}
+
+.box {
+  margin-top: -700px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+
+}
+
+.poze {
+
+  padding-bottom: 300px;
+  margin-left: -200px;
+  margin-right: -200px;
+  padding-bottom: 300px;
+}
+
+.text {
+
+  color: #4585ff;
+  font-size: 20px;
+  font-family: 'Bodoni', serif;
+  text-align: center;
+  line-height: 30px;
+  font-weight: 600;
+ 
+}
+

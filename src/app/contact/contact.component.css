@@ -1,0 +1,112 @@
+/*
+.html{
+  height:100%;
+}
+
+.container {
+  min-height: 100%;
+  margin-top: 8%;
+  margin-top: 50px;
+}
+.title{
+
+  font-size:x-large;
+  text-align: center;
+}
+h1{
+  padding-left: 13%;
+}
+
+.continut {
+
+  align-content: center;
+  padding-left: 30%;
+}
+
+.box {
+
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+  align-content: center;
+  text-align: center;
+  position: center;
+
+}
+
+.full {
+  width: 100%;
+  align-content: center;
+  text-align: center;
+
+
+}
+.submit-button
+{
+  padding-left: 20%;
+}
+*/
+
+.html{
+  height:100%;
+}
+
+.container {
+  min-height: 100%;
+  margin-top: 4%;
+
+}
+.title{
+
+  font-size:x-large;
+  text-align: center;
+}
+
+/*.container h1{
+  padding-left: 13%;
+  margin-top: 25%;
+  font-size:x-large;
+}*/
+
+
+.box {
+  /* min-width: 25%;*/
+  max-width: 100%;
+  width: 100%;
+  align-content: center;
+  text-align: center;
+  position: center;
+
+
+}
+.full {
+  width: 100%;
+  align-content: center;
+  text-align: center;
+  height: auto;
+
+}
+/*.submit-button
+{
+  padding-left: 45%;
+ font-size: 18px;
+ font-family: Arial, Helvetica, sans-serif;
+
+}*/
+.buton-submit
+{
+  width: 30%;
+  margin-left:38%;
+
+
+}
+.button{
+  width: 75%;
+  height: 25%;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+

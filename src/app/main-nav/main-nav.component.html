@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+
+               [ngClass]="{hidden: !(isHandset$ | async) === true}"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a href="#" mat-button routerLink="/main">Acasa</a>
+      <a href="#" mat-button>Recomandare Specialist</a>
+      <a href="#" mat-button routerLink="/recomandaremed">Recomandare medicament</a>
+      <a href="#" mat-button routerLink="/medicamente">Lista Medicamente</a>
+      <a href="#" mat-button routerLink="/contact">Contact</a>
+      <a href="#" mat-button routerLink="/rating">Recenzie</a>
+      <a href="#" mat-button routerLink="/despre">Despre noi</a>
+      <a href="http://localhost:4021/login" mat-button>Login</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span style="  font-family:'Bodoni', serif;
+      font-size: 30px;
+      color:#E8EAF6;">!FII<span style="  font-family:'Bodoni', serif;
+        font-size: 29px;
+        color: #82B1FF;">bolnav</span> </span>
+      <span class="spacer"></span>
+      <div class="hide">
+        <a href="#" mat-button routerLink="/main">Acasa</a>
+        <a href="#" mat-button>Recomandare Specialist</a>
+        <a href="#" mat-button routerLink="/recomandaremed">Recomandare medicament</a>
+        <a href="#" mat-button routerLink="/medicamente">Lista Medicamente</a>
+        <a href="#" mat-button routerLink="/contact">Contact</a>
+        <a href="#" mat-button routerLink="/rating">Recenzie</a>
+        <a href="#" mat-button routerLink="/despre">Despre noi</a>
+        <a href="http://localhost:4021/login" mat-button>Login</a>
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

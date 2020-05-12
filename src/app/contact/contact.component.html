@@ -1,0 +1,75 @@
+<app-main-nav >
+
+<div class="container">
+<mat-card class="card">
+  <mat-card-content class ="continut">
+    <section class="form">
+      <div class="hero">
+        <div class="container">
+          <h1 class="title" color="primary">Trimiteti-ne un mesaj !</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- name -->
+        <div class = "name">
+          <table class="box" cellspacing="0"><tr>
+            <mat-form-field class="full">
+              <mat-label>Prenume</mat-label>
+              <input matInput [(ngModel)]='prenume' (keyup.enter)='sendcontact()'>
+            </mat-form-field>
+            <mat-form-field class="full">
+              <mat-label>Nume</mat-label>
+              <input matInput [(ngModel)]='nume' (keyup.enter)='sendcontact()'>
+            </mat-form-field>
+          </tr></table>
+        </div>
+        <!-- email -->
+        <div class="email">
+          <form class="box">
+            <mat-form-field ng-submit="sendContact()"  class="full">
+              <mat-label>Email</mat-label>
+              <input matInput [formControl]="emailFormControl" placeholder="Ex. medicationteam@FII.com" [(ngModel)]='emailprimit' (keyup.enter)='sendcontact()'>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Introduceti un email valid !!
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Emailul este <strong>necesar</strong>
+              </mat-error>
+            </mat-form-field>
+          </form>
+        </div>
+
+        <!-- message -->
+        <div class="message">
+          <form class="box">
+            <mat-form-field class="full">
+              <mat-label>Va asteptam gandurile, sugestiile si parerile cu drag !</mat-label>
+              <input matInput #message maxlength="256" placeholder="Ex. Am o rproblema cu..." [(ngModel)]='comentariu' (keyup.enter)='sendcontact()'>
+              <mat-hint align="start"><strong>Evitati vocabularul licentios! Va multumim :)  </strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </form>
+        </div>
+        <br>
+
+        <!--<div class="submit-button">
+          <button (click)="sendcontact()" mat-raised-button color="primary" >Trimite</button>
+        </div>-->
+        <section class = "buton-submit">
+          <button (click)="sendcontact()" mat-flat-button color="primary" class="button">Trimite </button>
+        </section>
+
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+</div>
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+</app-main-nav>

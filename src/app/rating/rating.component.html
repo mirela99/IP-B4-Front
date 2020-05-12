@@ -1,0 +1,34 @@
+<app-main-nav>
+<div class="container">
+<br>
+<br>
+<h1>Bun venit pe pagina de recenzii !</h1>
+  <p>     Dorim sa imbunatatim constant aceasta platforma, motiv pentru       care feedback-ul tau este foarte important pentru noi.
+    Te rugam sa ne acorzi o nota, in functie de calitatea serviciilor oferite, si un comentariu daca ai completari.</p>
+<br>
+<form [formGroup]="comentariuSpatiu" (ngSubmit)="comentariuSpatiu" class="example-form">
+  <mat-form-field    class="example-full-width">
+    <mat-label>Puteti lasa un comentariu!</mat-label>
+    <!--  <input id="comentariu" #comentariu placeholder="Ex. Serviciu de folos">-->
+   <input id="comentariu" formControlName="comentariu" [(ngModel)]="text1" matInput placeholder="Ex. Serviciu de folos"/>
+  </mat-form-field>
+</form>
+<br>
+<ngb-rating [(rate)]="currentRate" class="rating">
+  <ng-template let-fill="fill" let-index="index" >
+    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+  </ng-template>
+</ngb-rating>
+<br>
+<pre class="rate">Evaluare oferita: <b>{{currentRate}}</b></pre>
+<br>
+<section class = "buton-submit">
+  <button mat-flat-button color="primary" (click)='trimiteComentariu()'>Trimite Recenzia</button>
+</section>
+
+</div>
+<footer>
+  <app-footer></app-footer>
+</footer>
+</app-main-nav>
+

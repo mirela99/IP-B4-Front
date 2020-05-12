@@ -1,0 +1,1 @@
+export * from './despre.component';
