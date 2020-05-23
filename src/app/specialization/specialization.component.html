@@ -1,0 +1,185 @@
+
+<app-main-nav>
+  <div class="container">
+<mat-form-field class="sameline" appearance="outline">
+    <mat-label>
+      Specializare
+    </mat-label>
+    <mat-select matNativeControl [(ngModel)]="name" (ngModelChange)="searchSpec()">
+      <mat-option value="Alergologie si imunologie">
+        Alergologie si imunologie
+      </mat-option>
+      <mat-option value="Anatomie patologica">
+        Anatomie patologica
+      </mat-option>
+      <mat-option value="Anestezie si terapie intensiva">
+        Anestezie si terapie intensiva
+      </mat-option>
+      <mat-option value="Boli infectioase">
+        Boli infectioase
+      </mat-option>
+      <mat-option value="Cardiologie">
+        Cardiologie
+      </mat-option>
+      <mat-option value="Chirurgie cardiovasculara">
+        Chirurgie cardiovasculara
+      </mat-option>
+      <mat-option value="Chirurgie generala">
+        Chirurgie generala
+      </mat-option>
+      <mat-option value="Chirurgie oncologica">
+        Chirurgie oncologica
+      </mat-option>
+      <mat-option value="Chirurgie orala si maxilo-faciala">
+        Chirurgie orala si maxilo-faciala
+      </mat-option>
+      <mat-option value="Chirurgie ortopedie pediatrica">
+        Chirurgie ortopedie pediatrica
+      </mat-option>
+      <mat-option value="Chirurgie pediatrica">
+        Chirurgie pediatrica
+      </mat-option>
+      <mat-option value="Chirurgie plastica-microchirurgie reconstructiva">
+        Chirurgie plastica-microchirurgie reconstructiva
+      </mat-option>
+      <mat-option value="Chirurgie toracica">
+        Chirurgie toracica
+      </mat-option>
+      <mat-option value="Chirurgie vasculara">
+        Chirurgie vasculara
+      </mat-option>
+      <mat-option value="Consiliere alaptare">
+        Consiliere alaptare
+      </mat-option>
+      <mat-option value="Dermatovenerologie">
+        Dermatovenerologie
+      </mat-option>
+      <mat-option value="Diabet zaharat , nutritie si boli metabolice">
+        Diabet zaharat , nutritie si boli metabolice
+      </mat-option>
+      <mat-option value="Endocrinologie">
+        Endocrinologie
+      </mat-option>
+      <mat-option value="Epidemiologie">
+        Epidemiologie
+      </mat-option>
+      <mat-option value="Gastroenterologie">
+        Gastroenterologie
+      </mat-option>
+      <mat-option value="Genetica medicala">
+        Genetica medicala
+      </mat-option>
+      <mat-option value="Geriatrie si gerontologie">
+        Geriatrie si gerontologie
+      </mat-option>
+      <mat-option value="Hematologie">
+        Hematologie
+      </mat-option>
+      <mat-option value="Medicina de familie">
+        Medicina de familie
+      </mat-option>
+      <mat-option value="Medicina de laborator">
+        Medicina de laborator
+      </mat-option>
+      <mat-option value="Medicina generala">
+        Medicina generala
+      </mat-option>
+      <mat-option value="Medicina interna">
+        Medicina interna
+      </mat-option>
+      <mat-option value="Medicina muncii">
+        Medicina muncii
+      </mat-option>
+      <mat-option value="Nefrologie">
+        Nefrologie
+      </mat-option>
+      <mat-option value="Neonatologie">
+        Neonatologie
+      </mat-option>
+      <mat-option value="Neurochirurgie">
+        Neurochirurgie
+      </mat-option>
+      <mat-option value="Neurologie">
+        Neurologie
+      </mat-option>
+      <mat-option value="Neurologie pediatrica">
+        Neurologie pediatrica
+      </mat-option>
+      <mat-option value="Neuropsihiatrie infantila">
+        Neuropsihiatrie infantila
+      </mat-option>
+      <mat-option value="Obstetrica - ginecologie">
+        Obstetrica - ginecologie
+      </mat-option>
+      <mat-option value="Oftalmologie">
+        Oftalmologie
+      </mat-option>
+      <mat-option value="Oncologie medicala">
+        Oncologie medicala
+      </mat-option>
+      <mat-option value="Orl (otorinolaringologie)">
+        Orl (otorinolaringologie)
+      </mat-option>
+      <mat-option value="Ortopedie si traumatologie">
+        Ortopedie si traumatologie
+      </mat-option>
+      <mat-option value="Ortopedie si traumatologie pediatrica">
+        Ortopedie si traumatologie pediatrica
+      </mat-option>
+      <mat-option value="Pediatrie">
+        Pediatrie
+      </mat-option>
+      <mat-option value="Pneumologie">
+        Pneumologie
+      </mat-option>
+      <mat-option value="Psihiatrie">
+        Psihiatrie
+      </mat-option>
+      <mat-option value="Psihiatrie pediatrica">
+        Psihiatrie pediatrica
+      </mat-option>
+      <mat-option value="Psihologie">Psihologie</mat-option>
+      <mat-option value="Radiologie-imagistica medicala">
+        Radiologie-imagistica medicala
+      </mat-option>
+      <mat-option value="Radioterapie">
+        Radioterapie
+      </mat-option>
+      <mat-option value="Recuperare medicala">
+        Recuperare medicala
+      </mat-option>
+      <mat-option value="Reumatologie">
+        Reumatologie
+      </mat-option>
+      <mat-option value="Tehnician">
+        Tehnician
+      </mat-option>
+      <mat-option value="Urologie">
+        Urologie
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <a class="sameline" href="#specializariDESC"> <button mat-raised-button id="sortButton"> Sortare </button></a>
+
+  <mat-card class="list-spec" *ngFor="let spec of specializations; let i = index" [class.active]="i == currentIndex" (click)="setActiveSpec(spec, i)">
+    <mat-card-title>
+      {{ spec.name }}
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        {{ spec.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <div id="specializariDESC">
+
+  </div>
+
+  </div>
+  <footer>
+  <app-footer></app-footer>
+  </footer>
+</app-main-nav>
+
+

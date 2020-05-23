@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 @Injectable({providedIn: 'root'})
 @Component({
   selector: 'app-contact',

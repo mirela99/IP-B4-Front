@@ -1,0 +1,46 @@
+<app-main-nav>
+ <div class="container">
+  <mat-card class="formular">
+    <form>
+      <mat-list role="list" *ngFor="let item of results['verdict']">
+        <div>
+          <p>S-ar putea sa ai: {{ item }}</p>
+        </div>
+
+      </mat-list>
+      <p> {{ results["question"] }} </p>
+      <div *ngIf='results["tip"]==="interval"'>
+        <mat-form-field class="example-full-width">
+          <mat-label>Valoare numerica</mat-label>
+          <input (change)="setStatusFromEvent($event)" matInput placeholder="30">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+      </div>
+      <div *ngIf='results["tip"]==="nivel_durere"'>
+        <mat-form-field class="example-full-width">
+            <mat-select (valueChange)="setStatus($event)">
+              <mat-option value="0">Deloc</mat-option>
+              <mat-option value="1">Mic</mat-option>
+              <mat-option value="2">Mediu</mat-option>
+              <mat-option value="3">Mare</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+      </div>
+      <div *ngIf='results["tip"]==="existenta"'>
+        <mat-form-field class="example-full-width">
+          <mat-select (valueChange)="setStatus($event)">
+            <mat-option value="0">Nu</mat-option>
+            <mat-option value="1">Da</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+      </div>
+    </form>
+    </mat-card>
+ </div>
+<footer>
+<app-footer></app-footer>
+</footer>
+  </app-main-nav>

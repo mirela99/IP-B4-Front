@@ -1,0 +1,40 @@
+<app-main-nav>
+<div class="container">
+<mat-form-field color="primary" class="boli">
+  <mat-label>Select the suspected disease</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let disease of diseases" [value]="disease.value">
+      {{disease.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<div style="text-align:center; margin-top: 100px; ">
+  <mat-card style="margin-top:10px; width: 50%;">
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let file of files">
+          <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+          <span id="file-label">
+
+                    </span>
+        </li>
+      </ul>
+    </mat-card-content >
+    <mat-card-actions color="primary">
+      <button (click)="onClick()" color="primary" mat-button class="buton">
+        <mat-icon>file_upload</mat-icon>
+        Upload
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <input style="align-content:center;" #fileUpload accept="image/*" id="fileUpload" name="fileUpload" style="display:none;" class="buton"
+         type="file"/>
+</div>
+</div>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+
+</app-main-nav>

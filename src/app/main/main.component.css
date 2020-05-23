@@ -5,7 +5,7 @@
 
 .container {
   min-height: 100%;
-  margin-top: 70px;
+  margin-top: 2px;
 }
 
 .box {
@@ -31,6 +31,6 @@
   text-align: center;
   line-height: 30px;
   font-weight: 600;
- 
+
 }
 

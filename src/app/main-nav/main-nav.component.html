@@ -7,14 +7,22 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+
       <a href="#" mat-button routerLink="/main">Acasa</a>
-      <a href="#" mat-button>Recomandare Specialist</a>
-      <a href="#" mat-button routerLink="/recomandaremed">Recomandare medicament</a>
-      <a href="#" mat-button routerLink="/medicamente">Lista Medicamente</a>
+      <a href="#" mat-button routerLink="/form">Cauta Specialist</a>
+      <a href="#" mat-button routerLink="/recomandaremed">Cauta medicament</a>
+      <a href="#" mat-button routerLink="/medicamente">Medicamente</a>
+      <a href="#"  mat-button routerLink="/doctors">Doctori</a>
+      <a href="#"  mat-button routerLink="/specialization" >Specializari</a>
+      <a href="#"  mat-button routerLink="/question">Intrebari</a>
       <a href="#" mat-button routerLink="/contact">Contact</a>
       <a href="#" mat-button routerLink="/rating">Recenzie</a>
       <a href="#" mat-button routerLink="/despre">Despre noi</a>
-      <a href="http://localhost:4021/login" mat-button>Login</a>
+      <a href="#" mat-button routerLink="/login">Login</a>
+      <a href="#" mat-button routerLink="/imageForm">Diagnosticare</a>
+
+
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -35,16 +43,38 @@
       <span class="spacer"></span>
       <div class="hide">
         <a href="#" mat-button routerLink="/main">Acasa</a>
-        <a href="#" mat-button>Recomandare Specialist</a>
-        <a href="#" mat-button routerLink="/recomandaremed">Recomandare medicament</a>
-        <a href="#" mat-button routerLink="/medicamente">Lista Medicamente</a>
-        <a href="#" mat-button routerLink="/contact">Contact</a>
-        <a href="#" mat-button routerLink="/rating">Recenzie</a>
-        <a href="#" mat-button routerLink="/despre">Despre noi</a>
-        <a href="http://localhost:4021/login" mat-button>Login</a>
+        <button mat-button [matMenuTriggerFor]="menu1">Medicamente</button>
+        <mat-menu #menu1="matMenu">
+          <button mat-menu-item routerLink="/drugs-recommendation">Cauta medicament</button>
+          <button mat-menu-item routerLink="/drugs" >Lista medicamente</button>
+        </mat-menu>
+        <a href="#" mat-button routerLink="/form">Cauta specialist</a>
+
+        <button mat-button [matMenuTriggerFor]="menu2">Specializari</button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item routerLink="/doctors">Cauta doctori</button>
+          <button mat-menu-item routerLink="/specialization">Lista specializari generale</button>
+          <button mat-menu-item routerLink="/question">Intrebari</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu3">Diagnosticari</button>
+        <mat-menu #menu3="matMenu">
+          <button mat-menu-item routerLink="/imageForm">Diagnosticare cu poza</button>
+          <button mat-menu-item routerLink="/quiz">Chestionar diagnosticare</button>
+          <button mat-menu-item routerLink="/notification">Notificari</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu4">Mai multe</button>
+        <mat-menu #menu4="matMenu">
+          <button mat-menu-item routerLink="/about">Despre noi</button>
+          <button mat-menu-item routerLink="/rating">Recenzie</button>
+          <button mat-menu-item routerLink="/contact">Contact</button>
+        </mat-menu>
+        <a href="#" mat-button routerLink="/login">Login</a>
+
       </div>
     </mat-toolbar>
     <ng-content></ng-content>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+

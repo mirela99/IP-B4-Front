@@ -1,11 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel} from '@angular/router';
-import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
-import {MedicamenteService} from '../medicamente.service';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 interface ATC {
@@ -149,7 +144,7 @@ export class MedicamenteComponent implements OnInit {
   ];
   popularitate: any;
   ordonare: any;
-  substanta: any;
+  subst: string;
   tip: any;
   categorie: any;
   categorieCautata: string;
@@ -159,6 +154,7 @@ export class MedicamenteComponent implements OnInit {
   // filtru: string;
   medicamente: any;
   codAles: any;
+  substanta: any;
   ordonareSortare: string;
   substantaAleasa: string;
   filtru = {
@@ -175,8 +171,9 @@ export class MedicamenteComponent implements OnInit {
     this.filtruMedicamente();
     const json = JSON.stringify(this.filtru);
     console.log(json);
+    console.log(this.subst);
     //  console.log('test ' + this.response);
-    return this.http.post( this.url,
+    return this.http.post(this.url,
       {
         stare: this.filtru.stare,
         categorie: this.filtru.categorie,
@@ -255,22 +252,22 @@ export class MedicamenteComponent implements OnInit {
     }
 
     if (this.substanta === 'Paracetamol') {
-      this.substantaAleasa = 'paracetamol';
+      this.subst = 'paracetamol';
     }
     if (this.substanta === 'Codeina') {
-      this.substantaAleasa = 'codeina';
+      this.subst = 'codeina';
     }
     if (this.substanta === 'Butamirat') {
-      this.substantaAleasa = 'butamirat';
+      this.subst = 'butamirat';
     }
     if (this.substanta === 'Oxeladină') {
-      this.substantaAleasa = 'oxeladină';
+      this.subst = 'oxeladină';
     }
     this.filtru.categorie = this.categorieCautata;
     this.filtru.stare = this.tipCautat;
     this.filtru.popularitate = this.popularitateSortare;
     this.filtru.codATC = this.codAles;
-    this.filtru.substanta = this.substantaAleasa;
+    this.filtru.substanta = this.subst;
     this.filtru.ordine = this.ordonareSortare;
   }
   /*this.filtru = '{"stare":"' + this.tipCautat + '","categorie":"'

@@ -1,0 +1,87 @@
+<app-main-nav>
+
+  <div class="container">
+<p *ngIf="isDoctor == false && isPatient == false" class='mesajPtUser'>
+    Creaza-ti un cont pentru a comunica cu doctori sau pacienti!
+</p>
+<p *ngIf="isDoctor == true" class='mesajPtUser'>
+    Pe aceasta pagina poti vizualiza si raspunde la intrebarile puse de alti utilizatori!
+</p>
+<p *ngIf="isPatient == true" class='mesajPtUser'>
+    Pe aceasta pagina poti vizualiza raspunsurile la intrebarile adresate doctorilor!
+</p>
+<mat-divider></mat-divider>
+<mat-card class="example-card" *ngFor="let message of messages; let i = index" [class.active]="i == currentIndex" (click)="setActiveMessage(message, i)">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title *ngIf="message.messageType == 'QUESTION'" class="colorBlack">Intrebare: </mat-card-title>
+
+        <mat-card-subtitle class="colorBlack">George Vasile, {{message.createdDate}}</mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content *ngIf="message.messageType == 'QUESTION'" class="mat-card-content">
+        <form class="example-form">
+            <p class="Raspuns">
+                {{ message.content }}
+            </p>
+        </form>
+    </mat-card-content>
+
+    <div mat-dialog-actions align="end">
+        <mat-card-actions>
+            <button (click)="onClickViewResponses(i,message)" mat-raised-button color="primary">Vezi raspunsuri: </button>
+            <div [hidden]="viewResponses != i">
+                <mat-card class="example-card" *ngFor="let response of responses; let j = index" [class.active]="j == currentIndexResponse" (click)="setActiveResponse(response, j)">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title class="colorBlack">Raspuns, {{message.createdDate}}:</mat-card-title>
+                        <mat-card-subtitle>Dr. George Vasile</mat-card-subtitle>
+                    </mat-card-header>
+
+                    <mat-card-content class="mat-card-content">
+                        <form class="example-form">
+                            <p class="Raspuns">
+                                {{ response.content }}
+                            </p>
+
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-card-actions>
+        <mat-card-actions *ngIf="isDoctor == true">
+            <button (click)="onClickOpenForm(i)" mat-raised-button color="primary">Raspunde</button>
+            <div [hidden]="!openResponseForm[i]">
+                <mat-card class="example-card">
+
+                    <p class="Raspuns2">Adauga raspuns:</p>
+                    <mat-card-content class="mat-card-content">
+                        <form class="example-form">
+                            <mat-form-field class="example-full-width">
+                                <mat-label class="interogare">Raspuns:</mat-label>
+                                <textarea matInput placeholder="Ex. Locatia este ..." [(ngModel)]="responseContent" name="response"></textarea>
+                            </mat-form-field>
+
+                        </form>
+                    </mat-card-content>
+                    <div mat-dialog-actions align="end">
+                        <mat-card-actions>
+                            <button (click)="sendMessageUsingRest(message)" mat-raised-button color="primary">Trimite</button>
+
+                        </mat-card-actions>
+                    </div>
+
+                </mat-card>
+            </div>
+        </mat-card-actions>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+</mat-card>
+<mat-divider></mat-divider>
+
+    </div>
+  <footer>
+  <app-footer></app-footer>
+  </footer>
+  </app-main-nav>

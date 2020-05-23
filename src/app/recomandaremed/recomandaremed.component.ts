@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
@@ -11,13 +11,16 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 export class RecomandaremedComponent {
   constructor(private http: HttpClient) {
   }
+  url: 'https://medicationteam.herokuapp.com/recomandare_medicament_true';
   bodyPart;
   simptoms = new FormControl();
   forms = new FormControl();
   simptome;
   formatMed;
   simtomsList = [];
-
+  parteaAleasa: string;
+  sAles: string[];
+  fAleasa: string[];
   formatsMed = ['Picături' ,
     'Gargarisme' ,
     'Loţiune' ,
@@ -269,16 +272,9 @@ export class RecomandaremedComponent {
   formaAleasa = this.forms.value;
   zonaAleasa = this.bodyPart;
   filtru = {
-    simptom: '',
-    forma: '',
+    simptom: [],
+    forma: [],
     zona: ''};
-
-  editInfo(info) {
-    this.bodyPart = info.aa;
-    this.simptome = info.bb;
-    this.formatMed = info.cc;
-    this.simtomsChangeAction(this.bodyPart);
-  }
 
   simtomsChangeAction(i) {
     this.simptome = '';
@@ -293,16 +289,21 @@ export class RecomandaremedComponent {
       this.simtomsList = [];
     }
   }
+  aplicareFiltru()
+  {
+    this.filtru.zona = this.parteaAleasa;
+    this.filtru.simptom = this.sAles;
+    this.filtru.forma = this.fAleasa;
+  }
   cerereMedicament(){
-    this.filtru.forma = this.formaAleasa;
-    this.filtru.simptom = this.simptomAles;
-    this.filtru.zona = this.zonaAleasa;
+    this.aplicareFiltru();
     const json = JSON.stringify(this.filtru);
     console.log(json);
-    return this.http.post<any>('https://medicationteam.herokuapp.com/medicamente/filter_backup',
-      { simptom: this.filtru.simptom, zona: this.filtru.zona, forma: this.filtru.zona}).
+    return this.http.post<any>(this.url,
+      { simptom: this.filtru.simptom, zona_corpului: this.filtru.zona, forma_farmaceutica: this.filtru.forma}).
     subscribe(data => {console.log(data);  } );
-}
+
+  }
 
 
 }
