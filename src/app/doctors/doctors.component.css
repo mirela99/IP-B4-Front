@@ -1,0 +1,49 @@
+.navbar {
+    justify-content: space-between;
+    color: white;
+    background-color: #3f51b5;
+    width:100%;
+}
+span {
+    padding-right: 1rem;
+}
+
+.span2 {
+    padding-left: 3rem;
+}
+
+mat-select {
+    width: 150px;
+}
+
+button {
+    font-size: x-large;
+    justify-content: space-between;
+}
+
+mat-paginator {
+    background-color: #3f51b5;
+    margin-top: 750px;
+    width:100%;
+}
+
+
+
+mat-card {
+    padding: 2vw;
+    margin: 0.1vw;
+    border-radius: 20px;
+    background-color: #3f51b5;
+    color: white;
+    left: 25%;
+    right: 25%;
+    width: 50%;
+}
+mat-card-title-group {
+    font-size: x-large;
+}
+.paginator{
+  margin-bottom: 100px;
+}
+
+

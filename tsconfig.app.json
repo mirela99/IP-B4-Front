@@ -6,9 +6,11 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/app/_models/login.model.ts"
   ],
   "include": [
     "src/**/*.d.ts"
+
   ]
 }

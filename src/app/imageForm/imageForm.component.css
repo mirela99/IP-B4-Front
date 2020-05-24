@@ -1,0 +1,23 @@
+
+.boli{
+  margin-top:100px;
+}
+
+.container{
+  min-height:100%;
+  text-align: right;
+  background-image: url('https://www.metropolitan-hospital.gr/images/slideshow/slide-en/excellence-medical-tourism.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+  max-width: 100%;
+}
+.container .buton
+{
+  font-size: medium;
+  align-content: center;
+  width: 30px;
+  margin-left: 100px;
+  display: inline-flex;
+}

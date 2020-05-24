@@ -1,0 +1,61 @@
+.container{
+  min-height:100%;
+}
+.menu-spacer {
+    flex: 1 1 auto;
+}
+
+.target {
+    padding: 0.1vw;
+    margin-top: 5vh;
+    font-size: 1.2vw;
+}
+
+.target > div {
+    display: none;
+}
+
+.target > div:target {
+    display: block;
+}
+
+mat-card {
+    padding:2vw;
+    margin: 0.1vw;
+    border-radius: 20px;
+    background-color: #3f51b5;
+    color:white;
+}
+
+mat-toolbar {
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.sidenavText {
+    color: #3f51b5;
+    text-decoration: double;
+}
+
+#acasa, #doctori, #specializariASC, #specializariDESC {
+    margin: 1vw;
+    padding: 1vw;
+}
+
+.sameline {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+#sortButton {
+    margin-top: -2vh;
+    margin-left:0vw;
+    height: 5vh;
+    width: 10vw;
+}
+
+a {
+    text-decoration: none;
+}

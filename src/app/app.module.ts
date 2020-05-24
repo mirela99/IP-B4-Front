@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import {CUSTOM_ELEMENTS_SCHEMA, enableProdMode, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {AppRoutingModule, routesConstants} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { MiddlePicturesComponent } from './middle-pictures/middle-pictures.component';
 import { BoxesComponent } from './boxes/boxes.component';
@@ -20,7 +20,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import {DespreComponent} from './despre';
 import {MainComponent} from './main';
 import {MatTabsModule} from '@angular/material/tabs';
-import {ContactComponent} from './contact/contact.component';
+import {ContactComponent} from './contact';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
@@ -57,14 +57,52 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {MedicamenteComponent} from './medicamente';
-import {RecomandaremedComponent} from './recomandaremed/recomandaremed.component';
+import {RecomandaremedComponent} from './recomandaremed';
 import {RatingComponent} from './rating';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import {FormComponentComponent} from './form-component/form.component';
+import {RecommendationComponentComponent} from './recommendation-component/recommendation.component';
+import {LoginComponent} from './login';
+import { fakeBackendProvider } from './_helpers';
+import { MDBBootstrapModule, ButtonsModule, WavesModule, CollapseModule, InputsModule } from 'angular-bootstrap-md';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { RegisterComponent } from './register';
+import { RecuperareComponent } from './recuperare'
+import { AlertComponent } from './_components';;
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider , GoogleLoginProvider } from 'angularx-social-login';;
+import { PatientProfileCreationComponent } from './patient-profile-creation/patient-profile-creation.component';
+import { DoctorProfileCreationComponent } from './doctor-profile-creation';
+import { SelectionComponent } from './selection';
+import { OrarMedicComponent } from './orar-medic';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
+import {SpecificDoctorComponent} from './specific-doctor/specific-doctor.component';
+import {ImageFormComponent} from './imageForm';
+import {ResultComponent} from './result/result.component';
 
+
+const config = new AuthServiceConfig([{
+  id: GoogleLoginProvider.PROVIDER_ID,
+  provider: new GoogleLoginProvider('977157414816-vk4g6l7cjhcgnjqf24d8lqn63jjf2g98.apps.googleusercontent.com')
+
+},
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('265582661268875')
+  }]);
+export function provideConfig(){
+  return config;
+}
+
+
+enableProdMode();
 @NgModule({
   declarations: [
-
+    ResultComponent,
+    ImageFormComponent,
+    LoginComponent,
+    FormComponentComponent,
+    RecommendationComponentComponent,
     AppComponent,
     FooterComponent,
     MiddlePicturesComponent,
@@ -76,10 +114,33 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     MedicamenteComponent,
     RecomandaremedComponent,
     RatingComponent,
-    MainNavComponent
+    MainNavComponent,
+    routesConstants,
+    NavBarComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecuperareComponent,
+    AlertComponent,
+    PatientProfileCreationComponent,
+    DoctorProfileCreationComponent,
+    SelectionComponent,
+    OrarMedicComponent,
+    SpecificDoctorComponent,
+
   ],
   imports: [
 
+    BrowserModule,
+    BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
+    FlexLayoutModule,
+    ButtonsModule,
+    WavesModule,
+    CollapseModule,
+    InputsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SocialLoginModule,
     NgbModule,
     BrowserModule,
     MatTabsModule,
@@ -153,9 +214,15 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     FlexLayoutModule,
     NgbModule
   ],
-  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }}],
+   providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }},
+     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: AuthServiceConfig, useFactory: provideConfig },
+    // provider used to create fake backend
+    fakeBackendProvider],
   bootstrap: [AppComponent,
     MedicamenteComponent, ContactComponent, RatingComponent ],
-  entryComponents: [MedicamenteComponent, ContactComponent, RatingComponent ]
+  entryComponents: [MedicamenteComponent, ContactComponent, RatingComponent ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

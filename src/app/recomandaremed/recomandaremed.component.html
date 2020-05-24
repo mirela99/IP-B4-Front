@@ -7,14 +7,14 @@
 
           <p>Aparatul sau sistemul asupra căruia solicitati medicamentatie:</p>
           <mat-form-field>
-            <mat-select placeholder="Selectati doar una*" name="body_part" (selectionChange)="simtomsChangeAction(bodyPart)" [(ngModel)]="bodyPart" >
+            <mat-select placeholder="Selectati doar una*" name="body_part" (selectionChange)="simtomsChangeAction(bodyPart)" [(ngModel)]="bodyPart" [(value)]="parteaAleasa">
               <mat-option *ngFor="let part of parts" [value]="part.partName" >{{ part.partName }}</mat-option>
             </mat-select>
           </mat-form-field><br>
 
           <p>Simptome manifestate:</p>
           <mat-form-field>
-            <mat-select [formControl]="simptoms" multiple placeholder="Selectati una sau mai multe*" name="simptoms" [(ngModel)]="simptome">
+            <mat-select [formControl]="simptoms" multiple placeholder="Selectati una sau mai multe*" name="simptoms" [(ngModel)]="simptome" [(value)]="sAles">
               <mat-option *ngFor="let simtom of simtomsList" [value]="simtom">{{ simtom }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -22,7 +22,7 @@
 
           <p>Forma medicamentoasa dorita:</p>
           <mat-form-field>
-            <mat-select [formControl]="forms" multiple placeholder="Selectati una sau mai multe*" name="format_med" [(ngModel)]="formatMed">
+            <mat-select [formControl]="forms" multiple placeholder="Selectati una sau mai multe*" name="format_med" [(ngModel)]="formatMed" [(value)]="fAleasa">
               <mat-option *ngFor="let format of formatsMed" [value]="format">{{ format }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -36,7 +36,7 @@
           </p>
           <br>
 
-          <button  mat-flat-button color="primary" type="submit" class ="btn-primary" color="primary" (click)="cerereMedicament()">Trimite</button>
+          <button  mat-flat-button color="primary" type="submit" class ="btn-primary" color="primary" (click)="preiaRezultate()">Trimite</button>
 
 
         </div>

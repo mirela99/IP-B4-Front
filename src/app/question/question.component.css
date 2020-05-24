@@ -1,0 +1,66 @@
+
+.container {
+  min-height: 100%;
+
+
+}.example-form {
+    font-size: 22px;
+    text-align: justify;
+    line-height: 1.6;
+    min-height: 100px;
+    width: 100%;
+}
+
+.mesajPtUser {
+    font-size: 22px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.Raspuns {
+    font-size: 22px;
+    text-align: justify;
+    line-height: 1.6;
+    color: WHITE;
+}
+
+.Raspuns2 {
+    font-size: 22px;
+    text-align: justify;
+    line-height: 1.6;
+    color: black;
+}
+
+.colorBlack {
+    color: black;
+}
+
+::placeholder {
+    color: white;
+}
+
+.interogare {
+    color: White;
+}
+
+.example-card {
+    background-color: WHITE;
+    color: WHITE;
+}
+
+.mat-card-content {
+    border-radius: 22px;
+    padding: 20px;
+    background-color: #3f51b5;
+}
+
+.example-full-width {
+    width: 100%;
+    color: WHITE;
+}
+
+.example-header-image {
+    background-image: url('./user.png');
+    background-size: cover;
+}

@@ -1,0 +1,67 @@
+<div>
+    <mat-card *ngIf="currentDoctor">
+        <mat-card-title>
+            Bun venit pe pagina Dr. {{currentDoctor.firstName}} {{currentDoctor.lastName}}!
+        </mat-card-title>
+        <mat-card-title-group> <a>Rating: {{currentDoctor.rating}} </a></mat-card-title-group>
+        <mat-card-content>
+            <div>Specializarile curente ale acestui doctor sunt:</div>
+            <div *ngFor="let speciality of currentDoctor.speciality let isLast=last">
+                <a> {{ speciality }} {{isLast ? '' : ', '}} </a>
+            </div>
+        </mat-card-content>
+        <mat-card-content>
+            <div>Locurile de munca disponibile acestui doctor sunt:</div>
+
+            <div *ngFor="let workplace of currentDoctor.workplace let isLast=last">
+                <a>{{workplace.hospitalName}} - {{workplace.city}} , {{workplace.country}} : str. {{workplace.street}} , nr. {{workplace.streetNo}} {{isLast ? '' : ', '}}</a>
+            </div>
+        </mat-card-content>
+
+        <mat-card-content>
+            <div> Zilele disponibile pentru acest doctor:</div>
+            <div *ngFor="let day of currentDoctor.disponibility let isLast=last">
+                <a> {{ day }} {{isLast ? '' : ', '}} </a>
+            </div>
+        </mat-card-content>
+
+        <mat-card-content>
+            <div>Datele de contact :</div>
+            <div>
+                <a>Numar de telefon : {{currentDoctor.contact.phone}}  ,</a>
+            </div>
+            <div>
+                <a>Adresa de email : {{currentDoctor.contact.email}} </a>
+            </div>
+        </mat-card-content>
+
+        <mat-card *ngIf="isPatient==true" class="example-card">
+
+            <p class="Intrebare">Aveti intrebari pentru acest doctor?</p>
+            <mat-card-content class="mat-card-content">
+                <form class="example-form">
+                    <mat-form-field class="field-full-width">
+                        <mat-label class="interogare">Introduceti numele</mat-label>
+                        <input [(ngModel)]="fromName" name="fromName" matInput placeholder="Ex. Popescu Ion" value="">
+                    </mat-form-field>
+
+                    <mat-form-field class="field-full-width">
+                        <mat-label class="interogare">Intrebarea:</mat-label>
+                        <textarea [(ngModel)]="questionContent" name="questionContent" matInput placeholder="Ex. As vrea sa stiu ..."></textarea>
+                    </mat-form-field>
+
+                </form>
+            </mat-card-content>
+            <div mat-dialog-actions align="end">
+                <mat-card-actions>
+                    <button (click)="sendMessageUsingRest()" mat-raised-button color="primary">Trimite</button>
+
+                </mat-card-actions>
+            </div>
+
+
+        </mat-card>
+
+    </mat-card>
+</div>
+

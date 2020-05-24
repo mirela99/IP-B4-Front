@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormControl, FormGroup} from '@angular/forms';
+import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: './app-recomandaremed',
@@ -9,15 +10,18 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 })
 
 export class RecomandaremedComponent {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private activeRoute: ActivatedRoute) {
   }
+  private result: Array<{}>;
   bodyPart;
   simptoms = new FormControl();
   forms = new FormControl();
   simptome;
   formatMed;
   simtomsList = [];
-
+  parteaAleasa: string;
+  sAles: string[];
+  fAleasa: string[];
   formatsMed = ['Picături' ,
     'Gargarisme' ,
     'Loţiune' ,
@@ -31,6 +35,7 @@ export class RecomandaremedComponent {
     'Gel',
     'Cremă' ,
     'Pastă' ];
+  raspuns:[];
 
   parts: any = [
     {
@@ -269,17 +274,11 @@ export class RecomandaremedComponent {
   formaAleasa = this.forms.value;
   zonaAleasa = this.bodyPart;
   filtru = {
-    simptom: '',
-    forma: '',
+    simptom: [],
+    forma: [],
     zona: ''};
-
-  editInfo(info) {
-    this.bodyPart = info.aa;
-    this.simptome = info.bb;
-    this.formatMed = info.cc;
-    this.simtomsChangeAction(this.bodyPart);
-  }
-
+  public get results() {
+    return this.result;}
   simtomsChangeAction(i) {
     this.simptome = '';
     const dropDownData = this.parts.find((data: any) => data.partName === i);
@@ -293,16 +292,29 @@ export class RecomandaremedComponent {
       this.simtomsList = [];
     }
   }
+  aplicareFiltru()
+  {
+    this.filtru.zona = this.parteaAleasa;
+    this.filtru.simptom = this.sAles;
+    this.filtru.forma = this.fAleasa;
+  }
   cerereMedicament(){
-    this.filtru.forma = this.formaAleasa;
-    this.filtru.simptom = this.simptomAles;
-    this.filtru.zona = this.zonaAleasa;
+    this.aplicareFiltru();
     const json = JSON.stringify(this.filtru);
     console.log(json);
-    return this.http.post<any>('https://medicationteam.herokuapp.com/medicamente/filter_backup',
-      { simptom: this.filtru.simptom, zona: this.filtru.zona, forma: this.filtru.zona}).
+    return this.http.post<any>('https://medicationteam.herokuapp.com/recomandare_medicament_true',
+      { simptom: this.filtru.simptom, zona_corpului: this.filtru.zona, forma_farmaceutica: this.filtru.forma}).
     subscribe(data => {console.log(data);  } );
+
 }
+  preiaRezultate(){
+    this.aplicareFiltru();
+    const headers = new Headers();
+    // @ts-ignore
+    const params = new HttpParams().set('zona', this.parteaAleasa).set('simptom', this.filtru.simptom).set('forma', this.fAleasa);
+    headers.append('Content-Type', 'application/json');
+    console.log(params);
+    this.http.get('https://medicationteam.herokuapp.com/recomandare_medicament_true', {params});
 
-
+  }
 }

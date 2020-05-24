@@ -1,0 +1,175 @@
+
+<app-main-nav>
+  <div class="container">
+<mat-form-field class="sameline" appearance="outline">
+    <mat-label>
+        Specializare
+    </mat-label>
+    <mat-select matNativeControl [(ngModel)]="name" (ngModelChange)="searchSpec()">
+        <mat-option>
+            Alergologie si imunologie
+        </mat-option>
+        <mat-option>
+            Anatomie patologica
+        </mat-option>
+        <mat-option>
+            Anestezie si terapie intensiva
+        </mat-option>
+        <mat-option>
+            Boli infectioase
+        </mat-option>
+        <mat-option value="Cardiologie">
+            Cardiologie
+        </mat-option>
+        <mat-option>
+            Chirurgie cardiovasculara
+        </mat-option>
+        <mat-option>
+            Chirurgie generala
+        </mat-option>
+        <mat-option>
+            Chirurgie oncologica
+        </mat-option>
+        <mat-option>
+            Chirurgie orala si maxilo-faciala
+        </mat-option>
+        <mat-option>
+            Chirurgie ortopedie pediatrica
+        </mat-option>
+        <mat-option>
+            Chirurgie pediatrica
+        </mat-option>
+        <mat-option>
+            Chirurgie plastica-microchirurgie reconstructiva
+        </mat-option>
+        <mat-option>
+            Chirurgie toracica
+        </mat-option>
+        <mat-option>
+            Chirurgie vasculara
+        </mat-option>
+        <mat-option>
+            Consiliere alaptare
+        </mat-option>
+        <mat-option>
+            Dermatovenerologie
+        </mat-option>
+        <mat-option>
+            Diabet zaharat , nutritie si boli metabolice
+        </mat-option>
+        <mat-option>Endocrinologie</mat-option>
+        <mat-option>
+            Epidemiologie
+        </mat-option>
+        <mat-option>Gastroenterologie</mat-option>
+        <mat-option>
+            Genetica medicala
+        </mat-option>
+        <mat-option>
+            Geriatrie si gerontologie
+        </mat-option>
+        <mat-option>Hematologie</mat-option>
+        <mat-option>
+            Medicina de familie
+        </mat-option>
+        <mat-option>
+            Medicina de laborator
+        </mat-option>
+        <mat-option>
+            Medicina generala
+        </mat-option>
+        <mat-option>
+            Medicina interna
+        </mat-option>
+        <mat-option>
+            Medicina muncii
+        </mat-option>
+        <mat-option>
+            Nefrologie
+        </mat-option>
+        <mat-option>
+            Neonatologie
+        </mat-option>
+        <mat-option>
+            Neurochirurgie
+        </mat-option>
+        <mat-option>
+            Neurologie
+        </mat-option>
+        <mat-option>
+            Neurologie pediatrica
+        </mat-option>
+        <mat-option>
+            Neuropsihiatrie infantila
+        </mat-option>
+        <mat-option>
+            Obstetrica - ginecologie
+        </mat-option>
+        <mat-option>
+            Oftalmologie
+        </mat-option>
+        <mat-option>
+            Oncologie medicala
+        </mat-option>
+        <mat-option>
+            Orl (otorinolaringologie)
+        </mat-option>
+        <mat-option>
+            Ortopedie si traumatologie
+        </mat-option>
+        <mat-option>
+            Ortopedie si traumatologie pediatrica
+        </mat-option>
+        <mat-option>
+            Pediatrie
+        </mat-option>
+        <mat-option>
+            Pneumologie
+        </mat-option>
+        <mat-option>
+            Psihiatrie
+        </mat-option>
+        <mat-option>
+            Psihiatrie pediatrica
+        </mat-option>
+        <mat-option>Psihologie</mat-option>
+        <mat-option>
+            Radiologie-imagistica medicala
+        </mat-option>
+        <mat-option>Radioterapie</mat-option>
+        <mat-option>
+            Recuperare medicala
+        </mat-option>
+        <mat-option>
+            Reumatologie
+        </mat-option>
+        <mat-option>
+            Tehnician
+        </mat-option>
+        <mat-option>
+            Urologie
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<a class="sameline" href="#specializariDESC"> <button mat-raised-button id="sortButton"> Sortare </button></a>
+
+<mat-card class="list-spec" *ngFor="let spec of specializations; let i = index" [class.active]="i == currentIndex" (click)="setActiveSpec(spec, i)">
+    <mat-card-title>
+        {{ spec.name }}
+    </mat-card-title>
+    <mat-card-content>
+        <p>
+            {{ spec.description }}
+        </p>
+    </mat-card-content>
+</mat-card>
+
+<div id="specializariDESC"></div>
+
+  </div>
+  <footer>
+  <app-footer></app-footer>
+  </footer>
+</app-main-nav>
+
+

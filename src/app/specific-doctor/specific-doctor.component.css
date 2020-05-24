@@ -1,0 +1,67 @@
+.container{
+  min-height:100%;
+}
+mat-card {
+    padding: 2vw;
+    margin: 0.1vw;
+    border-radius: 20px;
+    background-color: #3f51b5;
+    color: white;
+    font-size: xx-large;
+}
+
+mat-card-content {
+    font-size: x-large;
+    margin-bottom: 30px;
+}
+
+mat-card-title {
+    margin-bottom: 30px;
+    font-size: xx-large;
+    font-style: oblique;
+}
+
+a {
+    font-style: italic;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+.example-form {
+    font-size: 22px;
+    text-align: justify;
+    line-height: 1.6;
+    min-height: 100px;
+    width: 100%;
+}
+
+.Intrebare {
+    font-size: 22px;
+    text-align: justify;
+    line-height: 1.6;
+    color: black;
+}
+
+.interogare {
+    color: black;
+}
+
+::ng-deep input.mat-input-element {
+    color: black;
+}
+
+::ng-deep textarea.mat-input-element {
+    color: black;
+}
+
+.field-full-width {
+    width: 100%;
+    color: WHITE;
+}
+
+.example-card {
+    background-color: WHITE;
+    color: black;
+}

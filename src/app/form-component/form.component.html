@@ -1,0 +1,191 @@
+<app-main-nav>
+<div class="container">
+  <mat-card>
+    <form>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="symptomsForm">
+          <ng-template matStepLabel>Simptome</ng-template>
+
+          <form class="example-form" [formGroup]="symptomsForm">
+            <ng-template matStepLabel>Simptome</ng-template>
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="Alege zona corpului" aria-label="Number" matInput
+                [formControl]="this.symptomsForm.controls.bodyPartControl" [matAutocomplete]="auto" required>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions " [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="this.symptomsForm.controls.bodyPartControl.hasError('required')">Trebuie să alegeți o
+                opțiune</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="Alege simptomul" aria-label="Number" matInput
+                [formControl]="this.symptomsForm.controls.simptomTypeControl" [matAutocomplete]="auto2" required>
+              <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of symptoms" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="this.symptomsForm.controls.simptomTypeControl.hasError('required')">Trebuie să alegeți
+                o opțiune</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Suferiți de vreo afecțiune cronică inregistrată?</mat-label>
+              <mat-select [formControl]="this.symptomsForm.controls.chronicDeseaseControl">
+                <mat-option *ngFor="let choice of choices" [value]="choice.value">
+                  {{choice.viewValue}}
+
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="this.symptomsForm.controls.chronicDeseaseControl.hasError('required')">Trebuie să
+                alegeți o opțiune</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Data ultimului control medical (măcar aproximativ)</mat-label>
+              <input matInput [formControl]="this.symptomsForm.controls.lastDateControl" [matDatepicker]="picker"
+                [max]="maxDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker>
+
+              </mat-datepicker>
+              <mat-error *ngIf="this.symptomsForm.controls.lastDateControl.hasError('required')">Trebuie să alegeți o
+                opțiune</mat-error>
+            </mat-form-field>
+          </form>
+          <div>
+            <button mat-button matStepperNext (click)="getValuesStepOne()">Următorul</button>
+          </div>
+        </mat-step>
+
+
+
+
+        <mat-step [stepControl]="detailsForm">
+
+          <ng-template matStepLabel>Detalii simptome</ng-template>
+          <form class="example-form">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Când au apărut simptomele?</mat-label>
+              <textarea matInput placeholder="Ex. În jurul datei de 1.04.2020."></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Detaliați simptomele.</mat-label>
+              <textarea matInput
+                placeholder="Ex. Durerea de cap este localizată în zona frontală și se manifestă în prima parte a zilei."></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Ați mai întâmpinat astfel de simptome? Dacă răspunsul este da, descrieți pe scurt cum ați
+                acționat atunci.</mat-label>
+              <textarea matInput
+                placeholder="Ex. Da. Am fost la medicul de familie și mi-a prescris o serie de pastile."></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Bănuiți care ar fi cauza simptomelor?</mat-label>
+              <textarea matInput
+                placeholder="Ex. Da. Acum câteva săptămâni am suferit de o raceală puternică. "></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>În momentul de față luați vreun medicament? Aveți vreo afecțiune pe care doriti să o
+                menționați?</mat-label>
+              <textarea matInput placeholder="Ex. Nu. Momentan nu iau niciun medicament."></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Alte informații pe care doriți să le adăugați?</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Înapoi</button>
+            <button mat-button matStepperNext>Următorul</button>
+          </div>
+
+        </mat-step>
+
+
+        <mat-step [stepControl]="infoForm">
+
+          <ng-template matStepLabel>Informații suplimentare</ng-template>
+          <form [formGroup]="infoForm">
+            <mat-form-field class="form-field">
+              <mat-label>Continuați cu adresa introdusă la înregistrare?</mat-label>
+              <mat-select [formControl]="this.infoForm.controls.locationControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let choice of choicesThirdStep" [value]="choice.value">
+                  {{choice.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="this.infoForm.controls.locationControl.hasError('required')">Trebuie să alegeți o
+                opțiune</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="exampchoicesControlle-full-width form-field">
+              <mat-label>Introduceți noua adresă (dacă este cazul)</mat-label>
+              <input matInput [formControl]="this.infoForm.controls.newLocationControl">
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+              <mat-label>Doriți ca doctorul dumneavoastră să fie bărbat sau femeie?</mat-label>
+              <mat-select [formControl]="this.infoForm.controls.medicControl" required>
+                <mat-option *ngFor="let anotherchoice of anotherchoices" [value]="anotherchoice.value">
+                  {{anotherchoice.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="this.infoForm.controls.newLocationControl.hasError('required')">Trebuie să alegeți
+                o opțiune</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+              <mat-label>Doriți un medic de la un cabinet privat sau de stat?</mat-label>
+              <mat-select [formControl]="this.infoForm.controls.clinicControl" required>
+                <mat-option *ngFor="let thirdchoice of thirdchoices" [value]="thirdchoice.value">
+                  {{thirdchoice.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="this.infoForm.controls.medicControl.hasError('required')">Trebuie să alegeți o
+                opțiune</mat-error>
+            </mat-form-field>
+
+            <h4>Selectați prețul maxim pe care doriți să îl alocați tuturor procedurilor medicale (în LEI):</h4>
+
+            <mat-slider id="slider" thumbLabel tickInterval="10" min="100" max="10000" (change)="updateValue($event)"
+              [value]="sliderValue" [tooltip]="bigTool">
+            </mat-slider>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Înapoi</button>
+            <button mat-button matStepperNext (click)="getCurrentInfo()">Următorul</button>
+          </div>
+
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Salvare</ng-template>
+          <p class="inf"><b>Informațiile tale au fost înregistrate!</b></p>
+          <p class="inf2">Mulțumim pentru timpul acordat. Poți vedea recomandările noastre apăsând butonul "Vezi
+            recomandări".</p>
+          <div>
+            <button mat-button matStepperPrevious>Înapoi</button>
+            <button mat-button (click)="sendJson()">Vezi recomandări </button>
+
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </form>
+  </mat-card>
+</div>
+</app-main-nav>
+<footer>
+  <app-footer></app-footer>
+
+</footer>
+
+<!--<router-outlet></router-outlet>-->
