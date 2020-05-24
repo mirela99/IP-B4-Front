@@ -27,9 +27,10 @@ interface ATCGroup {
 export class MedicamenteComponent implements OnInit {
   constructor(private httpClient: HttpClient) {
   }
-  test:any;
+  item: any;
+  test: any;
   bun: any;
-  parsat: Array<any> = [];
+  parsat: string;
   result: Object;
   response: object[];
   atcControl = new FormControl();
@@ -184,7 +185,11 @@ export class MedicamenteComponent implements OnInit {
   i: any;
   med: any;
   key: any;
-  parsatArray: any;
+  private _parsatArray: any;
+
+  get parsatArray(): any {
+    return this._parsatArray;
+  }
 
   medicamenteLista = [];
   public get results() {
@@ -224,40 +229,18 @@ export class MedicamenteComponent implements OnInit {
       .set('popularitate', this.filtru.popularitate)
       .set('substanta', this.substanta)
       .set('ordine', this.filtru.ordine);
-    console.log('ce dracu faci?');
-    // this.http.get<any>('https://medicationteam.herokuapp.com/medicamente/filter_by_name/sanosan');
-    // console.log(this.result);
-    (this.httpClient.get<any>('https://medicationteam.herokuapp.com/medicamente/filter', {params}))
+    this.httpClient.get<any>('https://medicationteam.herokuapp.com/medicamente/filter', {params})
       .subscribe(returnedStuff => {
         this.parsat = returnedStuff;
-      // this.result = JSON.stringify(returnedStuff);
-      // if (typeof this.result === 'string') {
-      //     this.parsat = JSON.parse(this.result);
-      //   }
-        this.parsatArray = Object.keys(this.parsat).map(i => this.parsat[i]);
-        console.log(this.parsatArray);
-        this.bun = JSON.stringify(this.parsat);
-
-        this.test = JSON.stringify(this.parsat);
-        this.test = JSON.parse(this.test);
-        console.log(this.test);
-        for( this.med in this.test )
-          console.log(this.test[this.med]);
-        console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv');
-        for ( this.med in this.parsat ){
-         // console.log(this.med._id);
-          console.log(this.parsat[this.med]);
-          console.log('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-          // this.afiseaza();
-        // console.log(this.parsat[this.med]._id)
-          // @ts-ignore
-          for (this.key in this.parsat[this.med]){
-
-          //  console.log(this.key, this.parsat[this.med][this.key]);
-           // for( this.i in this.key)
-                 // console.log(this.key[this.i]);
-          }
-      }});
+        if(this.parsat!=='Setati filtrele pentru a afisa medicamente!'){
+        console.log('parsat');
+        console.log(this.parsat);
+        this._parsatArray = Object.keys(this.parsat).map(i => this.parsat[i]);
+        console.log(this._parsatArray);
+        for (this.med in this._parsatArray ) {
+          console.log(this._parsatArray[this.med]._id);
+  }}
+    else this._parsatArray =this.parsat;});
   }
   /*
   preiaRezultate2()
@@ -268,6 +251,7 @@ export class MedicamenteComponent implements OnInit {
       });
   }*/
   ngOnInit(): void {
+    this.preiaRezultate2();
   }
 
   filtruMedicamente() {
