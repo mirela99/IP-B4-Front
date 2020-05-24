@@ -85,7 +85,6 @@ export class RecomandaremedComponent {
         'Modificari ale gustului',
         'Prezenta unui gust metalic',
         'Limba umflata',
-        'Greutate la masticatie',
         'Linii albe usor proeminente pe suprafata limbii sau in interiorul obrajilor',
         'Leziuni inflamatorii la nivelul colturilor gurii',
         'Inflamare a mucoasei din interiorul gurii, ce se poate dezvolta pe gingii, pe limba, pe buze, pe partea interioara a obrajilor',

@@ -29,8 +29,8 @@ mat-toolbar a{
   text-decoration: none;
 
 }
-@media (max-width: 800px) {
-  mat-toolbar a{
-    display:none;
+@media (max-width: 930px) {
+  .hide {
+    display: none;
   }
 }

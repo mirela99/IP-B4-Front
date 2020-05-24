@@ -14,7 +14,7 @@
           <mat-label>Valoare numerica</mat-label>
           <input (change)="setStatusFromEvent($event)" matInput placeholder="30">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+        <button mat-raised-button color="primary" (click)="sendResponse()" class="button">Trimite raspuns</button>
       </div>
       <div *ngIf='results["tip"]==="nivel_durere"'>
         <mat-form-field class="example-full-width">
@@ -26,7 +26,7 @@
             </mat-select>
 
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+        <button mat-raised-button color="primary" (click)="sendResponse()" class="button">Trimite raspuns</button>
       </div>
       <div *ngIf='results["tip"]==="existenta"'>
         <mat-form-field class="example-full-width">
@@ -35,7 +35,7 @@
             <mat-option value="1">Da</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="sendResponse()" >Trimite raspuns</button>
+        <button mat-raised-button color="primary" (click)="sendResponse()"class="button" >Trimite raspuns</button>
       </div>
     </form>
     </mat-card>
