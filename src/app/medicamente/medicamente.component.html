@@ -5,7 +5,6 @@
         <mat-card>
             <mat-card-content>
                 <h2 class="example-h2">Selectati din optiunile de mai jos </h2>
-                <br>
                 <section class="example-section">
                     <label class="example-margin">Categorie Medicament:</label>
                     <mat-select matNativeControl [(ngModel)]="tipCautat" (ngModelChange)="filtruMedicamente()">
@@ -18,7 +17,7 @@
                         <mat-option class="example-margin" value="perfuzie">Perfuzie</mat-option>
                     </mat-select>
                 </section>
-                <br>
+               
                 <section class="example-section">
                     <label class="example-margin">Dupa tipul medicamentelor :</label>
                     <mat-select matNativeControl [(ngModel)]="categorie" (ngModelChange)="filtruMedicamente()">
@@ -28,7 +27,7 @@
                         <mat-option class="example-margin" value="fara prescriptie">Fara prescriptie</mat-option>
                     </mat-select>
                 </section>
-                <br>
+                
                 <section class="example-section">
                     <label class="example-margin">Dupa Substanta Activa:</label>
                     <mat-select matNativeControl [(ngModel)]="substanta" (ngModelChange)="filtruMedicamente()">
@@ -39,10 +38,10 @@
                         <mat-option class="example-margin">Alta optiune</mat-option>
                     </mat-select>
                 </section>
-                <div style="width:30%; margin-left: 15%;">
+                <div style="width:30%; margin-left: 15%; padding-bottom: 10px;">
                     <input class="form-control" type="search" id="search1" mdbInput [(ngModel)]="subst" placeholder="Intoduceti alta substanta" (keyup.enter)="filtruMedicamente()">
                 </div>
-                <br>
+               
                 <section class="example-section">
                     <label class="example-margin">Clasificare Anatomo Terapeutica Chimica(ATC):</label>
                     <mat-form-field ng-submit="filtruMedicamente()">
@@ -57,7 +56,7 @@
                         </mat-select>
                     </mat-form-field>
                 </section>
-                <br>
+           
                 <section class="example-section">
                     <label class="example-margin">Dupa Popularitate:</label>
                     <mat-select matNativeControl [(ngModel)]="popularitate" (ngModelChange)="filtruMedicamente()">
@@ -74,10 +73,9 @@
                         <mat-option class="example-margin" value="0">Z-A</mat-option>
                     </mat-select>
                 </section>
-                <br>
                 <section class="buton-search">
 
-                    <button mat-raised-button color="primary" (click)="preiaRezultate2()">Cauta Medicamente</button> s
+                    <button mat-raised-button color="primary" (click)="preiaRezultate2()">Cauta Medicamente</button> 
                 </section>
             </mat-card-content>
         </mat-card>

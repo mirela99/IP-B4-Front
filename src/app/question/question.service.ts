@@ -4,8 +4,9 @@ import { Message } from '../message';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { stringify } from '@angular/compiler/src/util';
 
-const baseUrl = 'http://localhost:8090/message';
+const baseUrl = 'https://specialization-api.herokuapp.com/message';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,9 @@ export class QuestionService {
       })
       ;
   }
+
+  getLocalStorage(){
+    let connectedUser = JSON.parse(localStorage.getItem('user'));
+  }
+
 }

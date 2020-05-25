@@ -5,12 +5,12 @@ import {DoctorService} from '../doctors/doctor.service';
 import {ParamMap} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import { Message } from '../message';
+import { Message } from '../message'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { QuestionService } from '../question/question.service'
 
-const urlToSendMesssage = 'http://localhost:8090/questions'
+const urlToSendMesssage = 'https://specialization-api.herokuapp.com/questions'
 
 @Component({
   selector: 'app-specific-doctor',
@@ -21,8 +21,9 @@ export class SpecificDoctorComponent implements OnInit {
   currentDoctor = null;
   message = '';
   questionContent = '';
-  isDoctor = false; //ce tip de utilizator este conectat
-  isPatient = true;
+  isDoctor = false; 
+  isPatient = false;
+  connectedUser = null;
   fromId = ''; //utilizatorul logat
   fromName ='';//utilizatorul logat
   messageType = 'question';
@@ -40,7 +41,6 @@ export class SpecificDoctorComponent implements OnInit {
         .subscribe(
             data => {
               this.currentDoctor = data;
-              console.log(data);
             },
             error => {
               console.log(error);
@@ -50,14 +50,47 @@ export class SpecificDoctorComponent implements OnInit {
   ngOnInit(): void {
     this.message = '';
     this.getDoctor(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.connectedUser = JSON.parse(localStorage.getItem('username'));
+    this.setUserInfo(this.connectedUser);
     this.initializeWebSocketConnection();
   }
 
+  Doctor(){
+    this.isDoctor = true;
+    this.isPatient = false;
+  }
+
+  Patient(){
+    this.isDoctor = false;
+    this.isPatient = true;
+  }
+
+  Guest(){
+    this.isDoctor = false;
+    this.isPatient = false;
+  }
+
+  setUserInfo(user){
+    if(user == null){
+      this.Guest();
+    }
+    else {
+      if(user.type == 'doctor'){
+        this.Doctor();
+      }
+      if(user.type == 'patient'){
+        this.Patient();
+      }
+      this.Patient();
+      this.fromId = user._id;
+      this.fromName = user.name.concat(user.surname.toString());
+  }
+  }
+
   sendMessageUsingRest() {
-    let message: Message = {content:this.questionContent, toId:this.activatedRoute.snapshot.paramMap.get('id'), fromId:this.fromId,
+    let message: Message = {content:this.questionContent, toId:this.activatedRoute.snapshot.paramMap.get('id'), fromId:this.fromId, 
                             fromName: this.fromName, messageType: this.messageType, responseTo:''}
     this.questionService.post(message).subscribe(res => {
-      console.log(res);
     })
   }
 
@@ -79,7 +112,6 @@ export class SpecificDoctorComponent implements OnInit {
   handleResult(message){
     if (message.body) {
       let messageResult: Message = JSON.parse(message.body);
-      console.log(messageResult);
       this.messages.push(messageResult);
     }
   }

@@ -10,8 +10,10 @@
         </mat-form-field>
 
 
-        <div style="text-align:center; margin-top: 100px; ">
-            <mat-card style="margin-top:10px; width: 50%;">
+        <div>
+            <!-- style="text-align:center; margin-top: 100px; " -->
+            <mat-card>
+                <!-- style="margin-top:10px; width: 50%;" -->
                 <mat-card-content>
                     <ul>
                         <li *ngFor="let file of files">
@@ -22,13 +24,24 @@
                         </li>
                     </ul>
                 </mat-card-content>
-                <mat-card-actions color="primary">
-                    <button (click)="onClick()" color="primary" mat-button class="buton">
-        <mat-icon>file_upload</mat-icon>
-        Upload
-      </button>
-                </mat-card-actions>
+        <!-- <mat-card-actions color="primary" class="upload">
+            <div  class="buton">
+            <button (click)="onClick()" color="primary" mat-button >
+                <mat-icon>file_upload</mat-icon>
+                                        Upload
+            </button>
+        </div>
+        </mat-card-actions> -->
+        <button mat-button (click)="onClick()" color="primary" class="buton" >
+            Incarca poza
+        </button>
             </mat-card>
+
+            
+           
+
+
+
             <input style="align-content:center;" #fileUpload accept="image/*" id="fileUpload" name="fileUpload" style="display:none;" class="buton" type="file" />
         </div>
     </div>

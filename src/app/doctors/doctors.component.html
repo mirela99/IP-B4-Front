@@ -1,273 +1,277 @@
 <app-main-nav>
 
-
-    <div>
-        <mat-toolbar color=#3f51b5 class="navbar span2">
+    <div class="container">
+        <mat-toolbar style="overflow:hidden; background-color:transparent;">
 
             <div>
-                <span></span>
+                <!-- <span></span> -->
 
-                <mat-form-field class="casets">
-                    <mat-label> Specializare </mat-label>
-                    <mat-select [(ngModel)]="specialitate" (ngModelChange)="filterDoctors()">
-                        <mat-option value="Alergologie si imunologie">
-                            Alergologie si imunologie
-                        </mat-option>
-                        <mat-option value="Anatomie patologica">
-                            Anatomie patologica
-                        </mat-option>
-                        <mat-option value="Anestezie si terapie intensiva">
-                            Anestezie si terapie intensiva
-                        </mat-option>
-                        <mat-option value="Boli infectioase">
-                            Boli infectioase
-                        </mat-option>
-                        <mat-option value="Cardiologie">
-                            Cardiologie
-                        </mat-option>
-                        <mat-option value="Chirurgie cardiovasculara">
-                            Chirurgie cardiovasculara
-                        </mat-option>
-                        <mat-option value="Chirurgie generala">
-                            Chirurgie generala
-                        </mat-option>
-                        <mat-option value="Chirurgie oncologica">
-                            Chirurgie oncologica
-                        </mat-option>
-                        <mat-option value="Chirurgie orala si maxilo-faciala">
-                            Chirurgie orala si maxilo-faciala
-                        </mat-option>
-                        <mat-option value="Chirurgie ortopedie pediatrica">
-                            Chirurgie ortopedie pediatrica
-                        </mat-option>
-                        <mat-option value="Chirurgie pediatrica">
-                            Chirurgie pediatrica
-                        </mat-option>
-                        <mat-option value="Chirurgie plastica-microchirurgie reconstructiva">
-                            Chirurgie plastica-microchirurgie reconstructiva
-                        </mat-option>
-                        <mat-option value="Chirurgie toracica">
-                            Chirurgie toracica
-                        </mat-option>
-                        <mat-option value="Chirurgie vasculara">
-                            Chirurgie vasculara
-                        </mat-option>
-                        <mat-option value="Consiliere alaptare">
-                            Consiliere alaptare
-                        </mat-option>
-                        <mat-option value="Dermatovenerologie">
-                            Dermatovenerologie
-                        </mat-option>
-                        <mat-option value="Diabet zaharat , nutritie si boli metabolice">
-                            Diabet zaharat , nutritie si boli metabolice
-                        </mat-option>
-                        <mat-option value="Endocrinologie">
-                            Endocrinologie
-                        </mat-option>
-                        <mat-option value="Epidemiologie">
-                            Epidemiologie
-                        </mat-option>
-                        <mat-option value="Gastroenterologie">
-                            Gastroenterologie
-                        </mat-option>
-                        <mat-option value="Genetica medicala">
-                            Genetica medicala
-                        </mat-option>
-                        <mat-option value="Geriatrie si gerontologie">
-                            Geriatrie si gerontologie
-                        </mat-option>
-                        <mat-option value="Hematologie">
-                            Hematologie
-                        </mat-option>
-                        <mat-option value="Medicina de familie">
-                            Medicina de familie
-                        </mat-option>
-                        <mat-option value="Medicina de laborator">
-                            Medicina de laborator
-                        </mat-option>
-                        <mat-option value="Medicina generala">
-                            Medicina generala
-                        </mat-option>
-                        <mat-option value="Medicina interna">
-                            Medicina interna
-                        </mat-option>
-                        <mat-option value="Medicina muncii">
-                            Medicina muncii
-                        </mat-option>
-                        <mat-option value="Nefrologie">
-                            Nefrologie
-                        </mat-option>
-                        <mat-option value="Neonatologie">
-                            Neonatologie
-                        </mat-option>
-                        <mat-option value="Neurochirurgie">
-                            Neurochirurgie
-                        </mat-option>
-                        <mat-option value="Neurologie">
-                            Neurologie
-                        </mat-option>
-                        <mat-option value="Neurologie pediatrica">
-                            Neurologie pediatrica
-                        </mat-option>
-                        <mat-option value="Neuropsihiatrie infantila">
-                            Neuropsihiatrie infantila
-                        </mat-option>
-                        <mat-option value="Obstetrica - ginecologie">
-                            Obstetrica - ginecologie
-                        </mat-option>
-                        <mat-option value="Oftalmologie">
-                            Oftalmologie
-                        </mat-option>
-                        <mat-option value="Oncologie medicala">
-                            Oncologie medicala
-                        </mat-option>
-                        <mat-option value="Orl (otorinolaringologie)">
-                            Orl (otorinolaringologie)
-                        </mat-option>
-                        <mat-option value="Ortopedie si traumatologie">
-                            Ortopedie si traumatologie
-                        </mat-option>
-                        <mat-option value="Ortopedie si traumatologie pediatrica">
-                            Ortopedie si traumatologie pediatrica
-                        </mat-option>
-                        <mat-option value="Pediatrie">
-                            Pediatrie
-                        </mat-option>
-                        <mat-option value="Pneumologie">
-                            Pneumologie
-                        </mat-option>
-                        <mat-option value="Psihiatrie">
-                            Psihiatrie
-                        </mat-option>
-                        <mat-option value="Psihiatrie pediatrica">
-                            Psihiatrie pediatrica
-                        </mat-option>
-                        <mat-option value="Psihologie">Psihologie</mat-option>
-                        <mat-option value="Radiologie-imagistica medicala">
-                            Radiologie-imagistica medicala
-                        </mat-option>
-                        <mat-option value="Radioterapie">
-                            Radioterapie
-                        </mat-option>
-                        <mat-option value="Recuperare medicala">
-                            Recuperare medicala
-                        </mat-option>
-                        <mat-option value="Reumatologie">
-                            Reumatologie
-                        </mat-option>
-                        <mat-option value="Tehnician">
-                            Tehnician
-                        </mat-option>
-                        <mat-option value="Urologie">
-                            Urologie
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <span></span>
-                <mat-form-field>
+              <mat-form-field class="matt">
+                <mat-label class="matt"> Specializare </mat-label>
+                <mat-select [(ngModel)]="specialitate" (ngModelChange)="filterDoctors()">
+                  <mat-option value="Alergologie si imunologie">
+                    Alergologie si imunologie
+                  </mat-option>
+                  <mat-option value="Anatomie patologica">
+                    Anatomie patologica
+                  </mat-option>
+                  <mat-option value="Anestezie si terapie intensiva">
+                    Anestezie si terapie intensiva
+                  </mat-option>
+                  <mat-option value="Boli infectioase">
+                    Boli infectioase
+                  </mat-option>
+                  <mat-option value="Cardiologie">
+                    Cardiologie
+                  </mat-option>
+                  <mat-option value="Chirurgie cardiovasculara">
+                    Chirurgie cardiovasculara
+                  </mat-option>
+                  <mat-option value="Chirurgie generala">
+                    Chirurgie generala
+                  </mat-option>
+                  <mat-option value="Chirurgie oncologica">
+                    Chirurgie oncologica
+                  </mat-option>
+                  <mat-option value="Chirurgie orala si maxilo-faciala">
+                    Chirurgie orala si maxilo-faciala
+                  </mat-option>
+                  <mat-option value="Chirurgie ortopedie pediatrica">
+                    Chirurgie ortopedie pediatrica
+                  </mat-option>
+                  <mat-option value="Chirurgie pediatrica">
+                    Chirurgie pediatrica
+                  </mat-option>
+                  <mat-option value="Chirurgie plastica-microchirurgie reconstructiva">
+                    Chirurgie plastica-microchirurgie reconstructiva
+                  </mat-option>
+                  <mat-option value="Chirurgie toracica">
+                    Chirurgie toracica
+                  </mat-option>
+                  <mat-option value="Chirurgie vasculara">
+                    Chirurgie vasculara
+                  </mat-option>
+                  <mat-option value="Consiliere alaptare">
+                    Consiliere alaptare
+                  </mat-option>
+                  <mat-option value="Dermatovenerologie">
+                    Dermatovenerologie
+                  </mat-option>
+                  <mat-option value="Diabet zaharat , nutritie si boli metabolice">
+                    Diabet zaharat , nutritie si boli metabolice
+                  </mat-option>
+                  <mat-option value="Endocrinologie">
+                    Endocrinologie
+                  </mat-option>
+                  <mat-option value="Epidemiologie">
+                    Epidemiologie
+                  </mat-option>
+                  <mat-option value="Gastroenterologie">
+                    Gastroenterologie
+                  </mat-option>
+                  <mat-option value="Genetica medicala">
+                    Genetica medicala
+                  </mat-option>
+                  <mat-option value="Geriatrie si gerontologie">
+                    Geriatrie si gerontologie
+                  </mat-option>
+                  <mat-option value="Hematologie">
+                    Hematologie
+                  </mat-option>
+                  <mat-option value="Medicina de familie">
+                    Medicina de familie
+                  </mat-option>
+                  <mat-option value="Medicina de laborator">
+                    Medicina de laborator
+                  </mat-option>
+                  <mat-option value="Medicina generala">
+                    Medicina generala
+                  </mat-option>
+                  <mat-option value="Medicina interna">
+                    Medicina interna
+                  </mat-option>
+                  <mat-option value="Medicina muncii">
+                    Medicina muncii
+                  </mat-option>
+                  <mat-option value="Nefrologie">
+                    Nefrologie
+                  </mat-option>
+                  <mat-option value="Neonatologie">
+                    Neonatologie
+                  </mat-option>
+                  <mat-option value="Neurochirurgie">
+                    Neurochirurgie
+                  </mat-option>
+                  <mat-option value="Neurologie">
+                    Neurologie
+                  </mat-option>
+                  <mat-option value="Neurologie pediatrica">
+                    Neurologie pediatrica
+                  </mat-option>
+                  <mat-option value="Neuropsihiatrie infantila">
+                    Neuropsihiatrie infantila
+                  </mat-option>
+                  <mat-option value="Obstetrica - ginecologie">
+                    Obstetrica - ginecologie
+                  </mat-option>
+                  <mat-option value="Oftalmologie">
+                    Oftalmologie
+                  </mat-option>
+                  <mat-option value="Oncologie medicala">
+                    Oncologie medicala
+                  </mat-option>
+                  <mat-option value="Orl (otorinolaringologie)">
+                    Orl (otorinolaringologie)
+                  </mat-option>
+                  <mat-option value="Ortopedie si traumatologie">
+                    Ortopedie si traumatologie
+                  </mat-option>
+                  <mat-option value="Ortopedie si traumatologie pediatrica">
+                    Ortopedie si traumatologie pediatrica
+                  </mat-option>
+                  <mat-option value="Pediatrie">
+                    Pediatrie
+                  </mat-option>
+                  <mat-option value="Pneumologie">
+                    Pneumologie
+                  </mat-option>
+                  <mat-option value="Psihiatrie">
+                    Psihiatrie
+                  </mat-option>
+                  <mat-option value="Psihiatrie pediatrica">
+                    Psihiatrie pediatrica
+                  </mat-option>
+                  <mat-option value="Psihologie">Psihologie</mat-option>
+                  <mat-option value="Radiologie-imagistica medicala">
+                    Radiologie-imagistica medicala
+                  </mat-option>
+                  <mat-option value="Radioterapie">
+                    Radioterapie
+                  </mat-option>
+                  <mat-option value="Recuperare medicala">
+                    Recuperare medicala
+                  </mat-option>
+                  <mat-option value="Reumatologie">
+                    Reumatologie
+                  </mat-option>
+                  <mat-option value="Tehnician">
+                    Tehnician
+                  </mat-option>
+                  <mat-option value="Urologie">
+                    Urologie
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+               <span></span> 
 
-                    <mat-label> Locatie </mat-label>
-                    <mat-select matNativeControl [(ngModel)]="locatie" (ngModelChange)="filterDoctors()">
-                        <mat-option value="﻿Alba">﻿Alba</mat-option>
-                        <mat-option value="Arad">Arad</mat-option>
-                        <mat-option value="Argeș">Argeș</mat-option>
-                        <mat-option value="Bacău">Bacău</mat-option>
-                        <mat-option value="Bihor">Bihor</mat-option>
-                        <mat-option value="Bistrița-Năsăud">Bistrița-Năsăud</mat-option>
-                        <mat-option value="Botoșani">Botoșani</mat-option>
-                        <mat-option value="Brașov">Brașov</mat-option>
-                        <mat-option value="Brăila">Brăila</mat-option>
-                        <mat-option value="Buzău">Buzău</mat-option>
-                        <mat-option value="Caraș-Severin">Caraș-Severin</mat-option>
-                        <mat-option value="Călărași">Călărași</mat-option>
-                        <mat-option value="Cluj">Cluj</mat-option>
-                        <mat-option value="Constanța">Constanța</mat-option>
-                        <mat-option value="Covasna">Covasna</mat-option>
-                        <mat-option value="Dâmbovița">Dâmbovița</mat-option>
-                        <mat-option value="Dolj">Dolj</mat-option>
-                        <mat-option value="Galați">Galați</mat-option>
-                        <mat-option value="Giurgiu">Giurgiu</mat-option>
-                        <mat-option value="Gorj">Gorj</mat-option>
-                        <mat-option value="Harghita">Harghita</mat-option>
-                        <mat-option value="Hunedoara">Hunedoara</mat-option>
-                        <mat-option value="Ialomița">Ialomița</mat-option>
-                        <mat-option value="Iași">Iași</mat-option>
-                        <mat-option value="Ilfov">Ilfov</mat-option>
-                        <mat-option value="Maramureș">Maramureș</mat-option>
-                        <mat-option value="Mehedinți">Mehedinți</mat-option>
-                        <mat-option value="Mureș">Mureș</mat-option>
-                        <mat-option value="Neamț">Neamț</mat-option>
-                        <mat-option value="Olt">Olt</mat-option>
-                        <mat-option value="Prahova">Prahova</mat-option>
-                        <mat-option value="Satu">Satu</mat-option>
-                        <mat-option value="Mare">Mare</mat-option>
-                        <mat-option value="Sălaj">Sălaj</mat-option>
-                        <mat-option value="Sibiu">Sibiu</mat-option>
-                        <mat-option value="Suceava">Suceava</mat-option>
-                        <mat-option value="Teleorman">Teleorman</mat-option>
-                        <mat-option value="Timiș">Timiș</mat-option>
-                        <mat-option value="Tulcea">Tulcea</mat-option>
-                        <mat-option value="Vaslui">Vaslui</mat-option>
-                        <mat-option value="Vâlcea">Vâlcea</mat-option>
-                        <mat-option value="Vrancea">Vrancea</mat-option>
+              <mat-form-field  class="matt">
 
-                    </mat-select>
-                </mat-form-field>
+                <mat-label class="matt"> Locatie </mat-label>
+                <mat-select matNativeControl [(ngModel)]="locatie" (ngModelChange)="filterDoctors()">
+                  <mat-option value="﻿Alba">﻿Alba</mat-option>
+                  <mat-option value="Arad">Arad</mat-option>
+                  <mat-option value="Argeș">Argeș</mat-option>
+                  <mat-option value="Bacău">Bacău</mat-option>
+                  <mat-option value="Bihor">Bihor</mat-option>
+                  <mat-option value="Bistrița-Năsăud">Bistrița-Năsăud</mat-option>
+                  <mat-option value="Botoșani">Botoșani</mat-option>
+                  <mat-option value="Brașov">Brașov</mat-option>
+                  <mat-option value="Brăila">Brăila</mat-option>
+                  <mat-option value="Buzău">Buzău</mat-option>
+                  <mat-option value="Caraș-Severin">Caraș-Severin</mat-option>
+                  <mat-option value="Călărași">Călărași</mat-option>
+                  <mat-option value="Cluj">Cluj</mat-option>
+                  <mat-option value="Constanța">Constanța</mat-option>
+                  <mat-option value="Covasna">Covasna</mat-option>
+                  <mat-option value="Dâmbovița">Dâmbovița</mat-option>
+                  <mat-option value="Dolj">Dolj</mat-option>
+                  <mat-option value="Galați">Galați</mat-option>
+                  <mat-option value="Giurgiu">Giurgiu</mat-option>
+                  <mat-option value="Gorj">Gorj</mat-option>
+                  <mat-option value="Harghita">Harghita</mat-option>
+                  <mat-option value="Hunedoara">Hunedoara</mat-option>
+                  <mat-option value="Ialomița">Ialomița</mat-option>
+                  <mat-option value="Iași">Iași</mat-option>
+                  <mat-option value="Ilfov">Ilfov</mat-option>
+                  <mat-option value="Maramureș">Maramureș</mat-option>
+                  <mat-option value="Mehedinți">Mehedinți</mat-option>
+                  <mat-option value="Mureș">Mureș</mat-option>
+                  <mat-option value="Neamț">Neamț</mat-option>
+                  <mat-option value="Olt">Olt</mat-option>
+                  <mat-option value="Prahova">Prahova</mat-option>
+                  <mat-option value="Satu">Satu</mat-option>
+                  <mat-option value="Mare">Mare</mat-option>
+                  <mat-option value="Sălaj">Sălaj</mat-option>
+                  <mat-option value="Sibiu">Sibiu</mat-option>
+                  <mat-option value="Suceava">Suceava</mat-option>
+                  <mat-option value="Teleorman">Teleorman</mat-option>
+                  <mat-option value="Timiș">Timiș</mat-option>
+                  <mat-option value="Tulcea">Tulcea</mat-option>
+                  <mat-option value="Vaslui">Vaslui</mat-option>
+                  <mat-option value="Vâlcea">Vâlcea</mat-option>
+                  <mat-option value="Vrancea">Vrancea</mat-option>
 
-                <span></span>
+                </mat-select>
+              </mat-form-field>
 
-                <mat-form-field ng-submit="filterDoctors()">
-                    <mat-label>Nume medic</mat-label>
-                    <input matInput [(ngModel)]="name" (keyup.enter)="filterDoctors()">
-                </mat-form-field>
-                <span></span>
-                <mat-form-field>
+              <span></span> 
 
-                    <mat-label> Sorteaza </mat-label>
-                    <mat-select matNativeControl [(ngModel)]="sortare" (ngModelChange)="filterDoctors()">
-                        <mat-option value="Nume ( A - Z )">Nume ( A - Z )</mat-option>
-                        <mat-option value="Nume ( Z - A )">Nume ( Z - A )</mat-option>
-                        <mat-option value="Rating crescator">Rating crescator</mat-option>
-                        <mat-option value="Rating descrescator">Rating descrescator</mat-option>
-                    </mat-select>
-                </mat-form-field>
+              <mat-form-field ng-submit="filterDoctors()"  class="matt">
+                <mat-label class="matt">Nume medic</mat-label>
+                <input matInput [(ngModel)]="name" (keyup.enter)="filterDoctors()">
+              </mat-form-field>
+               <span></span> 
+              <mat-form-field  class="matt">
+
+                <mat-label class="matt"> Sorteaza </mat-label>
+                <mat-select matNativeControl [(ngModel)]="sortare" (ngModelChange)="filterDoctors()">
+                  <mat-option value="Nume ( A - Z )">Nume ( A - Z )</mat-option>
+                  <mat-option value="Nume ( Z - A )">Nume ( Z - A )</mat-option>
+                  <mat-option value="Rating crescator">Rating crescator</mat-option>
+                  <mat-option value="Rating descrescator">Rating descrescator</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+
             </div>
         </mat-toolbar>
 
     </div>
 
-    <div class="doctos">
-        <mat-card [routerLink]="'/doctors/'+doctor._id" class="list-doctors" *ngFor="let doctor of doctors; let i = index" [class.active]="i == currentIndex" (click)="setActiveDoctor(doctor, i)">
-            <mat-card-title>
-                Dr. {{ doctor.lastName }} {{ doctor.firstName }}
-            </mat-card-title>
-            <mat-card-title-group>rating: {{ doctor.rating }}</mat-card-title-group>
-            <mat-card-content>
-                Specialitati:
-                <a *ngFor="let speciality of doctor.speciality let isLast = last">
+  <div>
+    <mat-card [routerLink]="'/doctors/'+doctor._id" class="list-doctors" *ngFor="let doctor of doctors; let i = index" [class.active]="i == currentIndex" (click)="setActiveDoctor(doctor, i)">
+      <mat-card-title>
+        Dr. {{ doctor.lastName }} {{ doctor.firstName }}
+      </mat-card-title>
+      <mat-card-title-group>rating: {{ doctor.rating }}</mat-card-title-group>
+      <mat-card-content>
+        Specialitati:
+        <a *ngFor="let speciality of doctor.speciality let isLast = last">
           {{ speciality }} {{isLast ? '' : ', '}}
         </a>
-                <div></div>
-                Locul de munca:
-                <a *ngFor="let workplace of doctor.workplace let isLast=last">
+        <div></div>
+        Locul de munca:
+        <a *ngFor="let workplace of doctor.workplace let isLast=last">
           {{workplace.hospitalName}} - {{workplace.city}} {{isLast ? '' : ', '}}
         </a>
-                <div></div>
-                Contact:
-                <a>
+        <div></div>
+        Contact:
+        <a>
           {{doctor.contact.phone}} sau {{doctor.contact.email}}
         </a>
-            </mat-card-content>
-        </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-    </div>
-    <div class="">
-        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
-        </mat-paginator>
-    </div>
+  </div>
+  <div class="">
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
+    </mat-paginator>
+  </div>
 
-    <footer>
-        <app-footer></app-footer>
+<footer>
+  <app-footer></app-footer>
     </footer>
 
 

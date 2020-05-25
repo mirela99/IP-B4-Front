@@ -13,11 +13,23 @@
 
   max-width: 100%;
 }
-.container .buton
+
+/* .container .buton
 {
   font-size: medium;
-  align-content: center;
-  width: 30px;
-  margin-left: 100px;
+
   display: inline-flex;
+  
+  width:10%;
+  max-width:10%;
+  margin-left:10%;
+  margin-right:10%;
+} */
+
+.buton{
+  
+  font-size: medium;
+  margin-right:45%;
+  display: inline-flex;
+  flex-direction: column;
 }

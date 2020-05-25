@@ -15,6 +15,10 @@ export class SpecializationService {
   }
 
   getByName(name){
-    return this.http.get(baseUrl+'/name?name='+name);
+    return this.http.get(baseUrl + '/name?name=' + name);
+  }
+
+  getSortedSpecs(sorter) {
+    return this.http.get(baseUrl + '/sort' + sorter);
   }
 }

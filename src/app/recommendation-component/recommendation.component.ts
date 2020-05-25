@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RecommendationComponentComponent implements OnInit {
   private result: Array<{}>
-  url = 'https://recommendation-team.herokuapp.com/api/v1/recommendation_list/';
+  url = 'https://recommendation-ip.herokuapp.com/api/v1/recommendation_list/';
 
   constructor(private activeRoute: ActivatedRoute, private httpClient: HttpClient) { }
   public get results() {

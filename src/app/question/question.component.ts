@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { QuestionService } from './question.service';
-import { Message } from '../message';
+import { QuestionService } from './question.service'
+import { Message } from '../message'
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
-const url = 'http://localhost:8090/questions';
+const url = 'https://specialization-api.herokuapp.com/questions';
 
 @Component({
   selector: 'app-question',
@@ -18,17 +18,17 @@ export class QuestionComponent implements OnInit {
 
   constructor(private questionService : QuestionService) { }
 
-  messages : any;
+  messages: any;
   currentMessage = null;
   currentIndex = -1;
   openResponseForm = [];
-  isDoctor = true;
+  isDoctor = false;
   isPatient = false;
 
   private stompClient;
   responseContent = '';
   fromId = ''; // id utilizator logat
-  fromName = '';// nume utilizator logat
+  fromName = ''; // nume utilizator logat
   toId = '';
   messageType = 'response';
 
@@ -37,16 +37,52 @@ export class QuestionComponent implements OnInit {
   currentResponse = null;
   currentIndexResponse = -1;
 
+  connectedUser = null;
+
   ngOnInit(): void {
+
+    this.connectedUser = JSON.parse(localStorage.getItem('username'));
+    console.log(this.connectedUser._id);
+    this.setUserInfo(this.connectedUser);
     this.retrieveMessages();
   }
 
+  Doctor(){
+    this.isDoctor = true;
+    this.isPatient = false;
+  }
+
+  Patient(){
+    this.isDoctor = false;
+    this.isPatient = true;
+  }
+
+  Guest(){
+    this.isDoctor = false;
+    this.isPatient = false;
+  }
+
+  setUserInfo(user){
+    if(user == null){
+      this.Guest();
+    }
+    else {
+      if(user.type == 'doctor'){
+        this.Doctor();
+      }
+      if(user.type == 'patient'){
+        this.Patient();
+      }
+      this.fromId = user._id;
+      this.fromName = user.name.concat(user.surname.toString());
+  }
+  }
+
   retrieveMessages() {
-    this.questionService.getUserMessages('1')
+    this.questionService.getUserMessages(this.connectedUser._id)
       .subscribe(
         data => {
           this.messages = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -58,7 +94,6 @@ export class QuestionComponent implements OnInit {
       .subscribe(
         data => {
           this.responses = data;
-          console.log(data);
         },
         error => {
           console.log(error);
@@ -89,11 +124,9 @@ export class QuestionComponent implements OnInit {
   }
 
   sendMessageUsingRest(toMessage) {
-    console.log("ai trimis un mesaj!");
-    let message: Message = {content:this.responseContent, toId:toMessage.fromId, fromId:this.fromId,
+    let message: Message = {content:this.responseContent, toId:toMessage.fromId, fromId:this.fromId, 
                             fromName: this.fromName, messageType: this.messageType, responseTo:toMessage._id}
     this.questionService.post(message).subscribe(res => {
-      console.log(res);
     })
   }
 
@@ -115,7 +148,6 @@ export class QuestionComponent implements OnInit {
   handleResult(message){
     if (message.body) {
       let messageResult: Message = JSON.parse(message.body);
-      console.log(messageResult);
       this.messages.push(messageResult);
     }
   }

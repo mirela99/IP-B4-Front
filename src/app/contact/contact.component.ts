@@ -23,10 +23,11 @@ export class ContactComponent implements OnInit {
   ]);
   sendcontact()
   {
+    alert("S-a intregistrat mesajul, va multumim, va rugam sa va verificati emailul!");
     this.formular = '{"nume":"' + this.nume +  '","prenume":"' + this.prenume +  '","comentariu":"' + this.comentariu +  '","email":"' + this.emailprimit + '"}' ;
     const json = JSON.stringify(this.formular);
     console.log(json);
-    return this.http.post('https://medicationteam.herokuapp.com/medicamente/filter/backup', json,
+    return this.http.post('https://medicationteam.herokuapp.com/contact', json,
       {responseType : 'text'}).
     subscribe(data => {console.log(data);  } );
 

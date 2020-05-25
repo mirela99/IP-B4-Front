@@ -28,6 +28,7 @@ export class DoctorsComponent implements OnInit {
 
 
   retrieveDoctors() {
+    
     this.doctorService.getAll()
       .subscribe(
         data => {
@@ -75,6 +76,6 @@ export class DoctorsComponent implements OnInit {
         });
   }
 
-  
+
 
 }

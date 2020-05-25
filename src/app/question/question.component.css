@@ -1,9 +1,4 @@
-
-.container {
-  min-height: 100%;
-
-
-}.example-form {
+.example-form {
     font-size: 22px;
     text-align: justify;
     line-height: 1.6;
@@ -63,4 +58,7 @@
 .example-header-image {
     background-image: url('./user.png');
     background-size: cover;
+}
+.container{
+    min-height:100%;
 }

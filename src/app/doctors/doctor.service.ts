@@ -11,7 +11,9 @@ export class DoctorService {
   constructor(private http: HttpClient) { }
 
   getAll() {
+  
     return this.http.get(baseUrl);
+    
   }
 
   get(id) {

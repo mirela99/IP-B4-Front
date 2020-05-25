@@ -29,7 +29,7 @@ export class FormComponentComponent implements OnInit {
   filteredSecondOptions: string[];
   route: ActivatedRoute;
   maxDate: Date;
-  url = 'https://recommendation-team.herokuapp.com/api/v1/recommendation';
+  url = 'https://recommendation-ip.herokuapp.com/api/v1/recommendation';
 
   jsonObject = {
     simptoms: {

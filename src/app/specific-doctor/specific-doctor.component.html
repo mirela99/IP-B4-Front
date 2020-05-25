@@ -5,6 +5,7 @@
         </mat-card-title>
         <mat-card-title-group> <a>Rating: {{currentDoctor.rating}} </a></mat-card-title-group>
         <mat-card-content>
+
             <div>Specializarile curente ale acestui doctor sunt:</div>
             <div *ngFor="let speciality of currentDoctor.speciality let isLast=last">
                 <a> {{ speciality }} {{isLast ? '' : ', '}} </a>
@@ -34,7 +35,6 @@
                 <a>Adresa de email : {{currentDoctor.contact.email}} </a>
             </div>
         </mat-card-content>
-
         <mat-card *ngIf="isPatient==true" class="example-card">
 
             <p class="Intrebare">Aveti intrebari pentru acest doctor?</p>
@@ -64,4 +64,3 @@
 
     </mat-card>
 </div>
-

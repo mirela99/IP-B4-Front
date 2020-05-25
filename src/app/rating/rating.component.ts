@@ -23,6 +23,7 @@ this.comentariuSpatiu = this.formBuilder.group({comentariu:[this.text1]});
   }
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) { }
   trimiteComentariu(){
+    alert("S-a intregistrat feedback-ul, va multumim!");
     console.log(this.text1 , this.currentRate);
     this.feedback = '{"stelute":"' + this.currentRate + '","comentariu":"'
                       + this.text1 + '"}' ;
@@ -31,10 +32,7 @@ this.comentariuSpatiu = this.formBuilder.group({comentariu:[this.text1]});
     return this.httpClient.post('https://medicationteam.herokuapp.com/feedback/stelute', json,
      {responseType : 'text'}).
     subscribe(data => {console.log(data);  } );
-    /*return (this.httpClient.get('https://medicationteam.herokuapp.com//medicamente/filter_by_name/sanosan'))
-      .subscribe((returnedStuff) => {
-      console.log(returnedStuff);
-     });*/
+    
   }
 
 }
