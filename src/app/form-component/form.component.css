@@ -1,9 +1,10 @@
 body {
- /*   background-color: #F8F8F8;*/
+    /*   background-color: #F8F8F8;*/
     width: 100%;
     height: 100% !important;
     padding-top: 100px;
 }
+
 mat-card {
     /* display: flex; */
     justify-content: center;
@@ -13,10 +14,15 @@ mat-card {
     max-width: 794px;
     flex: 1;
     box-shadow: 5px 10px #F5F5F5;
-  margin-top:70px;
+    margin-top: 70px;
 }
+
 mat-horizontal-stepper {
     flex: 0 0 inherit;
+}
+
+mat-button {
+    background-color: #3f51B5;
 }
 
 .inf {
@@ -63,7 +69,8 @@ mat-slider {
     width: 500px;
     margin-left: 100px;
 }
+
 footer {
-  position: relative;
-  margin-top: 130px;
+    position: relative;
+    margin-top: 130px;
 }
