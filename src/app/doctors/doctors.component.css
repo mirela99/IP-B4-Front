@@ -3,6 +3,7 @@
     color: white;
     background-color: #3f51b5;
     width:100%;
+
 }
 span {
     padding-right: 1rem;
@@ -10,6 +11,7 @@ span {
 
 .span2 {
     padding-left: 3rem;
+    height:3% ;
 }
 
 mat-select {
@@ -27,8 +29,6 @@ mat-paginator {
     width:100%;
 }
 
-
-
 mat-card {
     padding: 2vw;
     margin: 0.1vw;
@@ -43,7 +43,62 @@ mat-card-title-group {
     font-size: x-large;
 }
 .paginator{
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
-
+@media  (max-width: 1000px) {
+    .navbar {
+        justify-content: space-between;
+        color: white;
+        background-color: #3f51b5;
+        width:auto;
+    
+    }
+    span {
+        padding-right: 1rem;
+    }
+    
+    .span2 {
+        padding-left: 3rem;
+        height:3% ;
+        width: auto;
+    }
+   mat-label{
+       font-size: 15px;
+   }
+   mat-form-field{
+       width: 15%;
+       
+   }
+   mat-select{
+       width: 90%;
+   }
+    }
+ @media  (max-width: 380px) {
+        .navbar {
+            color: white;
+            background-color: #3f51b5;
+            width:auto;
+        
+        }
+        span {
+            padding-right: 1rem;
+        }
+        
+        .span2 {
+            padding-left: 1rem;
+            height:3% ;
+            width: auto;
+        }
+       mat-label{
+           font-size: 9px;
+          
+       }
+       mat-form-field{
+           width:12%;
+           
+       }
+       mat-select{
+           width: 10%;
+       }
+        }

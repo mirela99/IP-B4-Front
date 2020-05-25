@@ -1,4 +1,5 @@
 <app-main-nav>
+  
 
     <div>
         <mat-toolbar color=#3f51b5 class="navbar span2">
@@ -6,8 +7,8 @@
             <div>
                 <span></span>
 
-              <mat-form-field>
-                <mat-label> Specializare </mat-label>
+              <mat-form-field class="casets">
+                <mat-label > Specializare </mat-label>
                 <mat-select [(ngModel)]="specialitate" (ngModelChange)="filterDoctors()">
                   <mat-option value="Alergologie si imunologie">
                     Alergologie si imunologie
@@ -230,15 +231,12 @@
                   <mat-option value="Rating descrescator">Rating descrescator</mat-option>
                 </mat-select>
               </mat-form-field>
-
-
-
             </div>
         </mat-toolbar>
 
     </div>
 
-  <div>
+  <div class="doctos">
     <mat-card [routerLink]="'/doctors/'+doctor._id" class="list-doctors" *ngFor="let doctor of doctors; let i = index" [class.active]="i == currentIndex" (click)="setActiveDoctor(doctor, i)">
       <mat-card-title>
         Dr. {{ doctor.lastName }} {{ doctor.firstName }}

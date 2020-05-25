@@ -13,13 +13,21 @@ body {
     background-size: cover;
 }
 
-.spacer {
-    flex-grow: 1;
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff;
+}
+
+.first {
+    margin-top: 10px;
 }
 
 .medium-list {
     width: 600px;
     padding: 10px;
+}
+
+mat-form-field {
+    width: 100%;
 }
 
 .list-viewer-wrapper {

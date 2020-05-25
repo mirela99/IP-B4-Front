@@ -159,8 +159,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <a class="sameline" href="#specializariDESC"> <button mat-raised-button id="sortButton"> Sortare </button></a>
-
+  <a class="button1" href="#specializariDESC"> <button mat-raised-button id="sortButton" color="primary" class="button"> Sortare </button></a>
+  
   <mat-card class="list-spec" *ngFor="let spec of specializations; let i = index" [class.active]="i == currentIndex" (click)="setActiveSpec(spec, i)">
     <mat-card-title>
       {{ spec.name }}
@@ -172,9 +172,16 @@
     </mat-card-content>
   </mat-card>
 
+
   <div id="specializariDESC">
 
   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
   </div>
   <footer>

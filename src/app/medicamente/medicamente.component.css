@@ -53,12 +53,22 @@
 }
 .buton-search{
   padding-left: 2%;
-  width: 75px;
-  height: 25px;
+ font-family: Arial, Helvetica, sans-serif;
+ margin-bottom: 4%;
+ margin-top:2%;
+ 
+}
+.btn-primary{
+  width: 30%;
+  height: 25%;
+  font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
-  margin-left: 50px;
+  margin-left: 30%;
+
 
 }
+
+
 .form-control{
   color: indigo;
 }

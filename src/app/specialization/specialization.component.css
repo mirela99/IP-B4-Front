@@ -47,6 +47,18 @@ mat-toolbar {
 .sameline {
     display: inline-flex;
     vertical-align: middle;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: auto;
+    
+  
+}
+.button1{
+    margin-left: 20px;
+    width: 60%;
+  height: 50%;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #sortButton {
