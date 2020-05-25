@@ -1,15 +1,14 @@
-
 <app-main-nav>
 
   <div class="container">
 
     <mat-card>
       <mat-card-content>
-        <h2 class="example-h2">Selectati din optiunile de mai jos  </h2>
+        <h2 class="example-h2">Selectati din optiunile de mai jos </h2>
         <br>
         <section class="example-section">
           <label class="example-margin">Categorie Medicament:</label>
-          <mat-select  matNativeControl [(ngModel)]="tipCautat" (ngModelChange)="filtruMedicamente()">
+          <mat-select matNativeControl [(ngModel)]="tipCautat" (ngModelChange)="filtruMedicamente()">
             <mat-option class="example-margin" value="sirop">Sirop</mat-option>
             <mat-option class="example-margin" value="comprimate">Comprimate</mat-option>
             <mat-option class="example-margin" value="injectabil">Injectabil</mat-option>
@@ -22,7 +21,7 @@
         <br>
         <section class="example-section">
           <label class="example-margin">Dupa tipul medicamentelor :</label>
-          <mat-select  matNativeControl [(ngModel)]="categorie" (ngModelChange)="filtruMedicamente()">
+          <mat-select matNativeControl [(ngModel)]="categorie" (ngModelChange)="filtruMedicamente()">
             <mat-option class="example-margin" value="reteta">Reteta</mat-option>
             <mat-option class="example-margin" value="reteta restrictiva">Reteta restrictiva</mat-option>
             <mat-option class="example-margin" value="reteta speciala">Reteta speciala</mat-option>
@@ -32,18 +31,18 @@
         <br>
         <section class="example-section">
           <label class="example-margin">Dupa Substanta Activa:</label>
-          <mat-select  matNativeControl [(ngModel)]="substanta" (ngModelChange)="filtruMedicamente()">
+          <mat-select matNativeControl [(ngModel)]="substanta" (ngModelChange)="filtruMedicamente()">
             <mat-option class="example-margin" value="Paracetamol">Paracetamol</mat-option>
             <mat-option class="example-margin" value="Codeina">Codeină</mat-option>
             <mat-option class="example-margin" value="Butamirat">Butamirat</mat-option>
             <mat-option class="example-margin" value="Oxeladină">Oxeladină</mat-option>
-
-              <!--<label for="search1">  Alta Optiune  </label>-->
-              <input class="form-control" type="search" id="search1" mdbInput [(ngModel)]="subst" (keyup.enter)="filtruMedicamente()">
-              {{subst}}
-
+            <mat-option class="example-margin">Alta optiune</mat-option>
           </mat-select>
         </section>
+        <div style="width:30%; margin-left: 15%;">
+          <input class="form-control" type="search" id="search1" mdbInput [(ngModel)]="subst" placeholder="Intoduceti alta substanta"
+                 (keyup.enter)="filtruMedicamente()">
+        </div>
         <br>
         <section class="example-section">
           <label class="example-margin">Clasificare Anatomo Terapeutica Chimica(ATC):</label>
@@ -53,7 +52,7 @@
               <mat-option>-- None --</mat-option>
               <mat-optgroup *ngFor="let group of atcGroups" [label]="group.name"
                             [disabled]="group.disabled">
-                <mat-option *ngFor="let category of group.category" [value]="category.value" >
+                <mat-option *ngFor="let category of group.category" [value]="category.value">
                   {{category.viewValue}}
                 </mat-option>
               </mat-optgroup>
@@ -78,92 +77,56 @@
           </mat-select>
         </section>
         <br>
-        <section class= "buton-search">
+        <section class="buton-search">
           <button mat-raised-button color="accent" (click)="preiaRezultate2()">Cauta Medicamente</button>
         </section>
       </mat-card-content>
     </mat-card>
 
-
-<!--    <span *ngFor=" let med of parsatArray">-->
-<!--      {{parsatArray[med]._id}}-->
-<!--    </span>-->
-    <div *ngIf="parsatArray.length!==0">
-
-      <table>
-        <thead>
-        <th>Name</th>
-        <th>Index</th>
-        </thead>
-        <tbody>
-
-        <tr *ngFor="let med of parsatArray">
-          {{med._id}}
-          {{med.Cod_ATC}}
-        </tr>
-
-        </tbody>
-
-      </table>
-    </div>
     <div *ngIf="parsatArray==='Setati filtrele pentru a afisa medicamente!'">
-      <p>loading..</p>
+      <p style="text-align: center; font-size: large; padding: 10px;">Completati pentru a primi informatii!</p>
+    </div>
+    <div *ngIf="parsatArray==='Nu am gasit medicament pentru cerintele userului'">
+      <p>Nu sunt elemente..</p>
+    </div>
+    <div style="margin-bottom: 300px;">
+      <mat-accordion *ngIf="parsatArray.length!==0">
+        <mat-list role="list" *ngFor="let med of parsatArray">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{med.Denumire_comerciala}}
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <mat-list>
+              <p><b>Actiune terapeutica:</b>  {{med.Actiune_terapeutica}}</p>
+              <p><b>Substante active:</b>  {{med.Substante_active}}</p>
+              <p><b>Contraindicatii:</b>  {{med.Contraindicatii}}</p>
+              <p><b>Indicatii terapeutice:</b>  {{med.Indicatii_terapeutice}}</p>
+              <p><b>Pentru ce se utilizeaza:</b>  {{med.Pentru_ce_se_utilizeaza}}</p>
+              <p><b>Nu luati daca:</b>  {{med.Inainte_de_utilizare}}</p>
+              <p><b>Mod de administrare:</b>  {{med.Mod_de_administrare}}</p>
+              <p><b>Pastrarea medicamentului:</b>  {{med.Pastrare}}</p>
+
+            </mat-list>
+
+          </mat-expansion-panel>
+
+        </mat-list>
+      </mat-accordion>
+
+      <mat-card class="noResults" *ngIf="parsatArray.length===0">
+        <p class="noResultsText">Ne pare rău, dar în acest moment nu există recomandări specifice problemei
+          dumneavoastră</p>
+      </mat-card>
     </div>
 
-
-
-
-  <!--
-   <div>
-      <ng-container *ngFor="let item of results">
-        <tr class="pointer" *ngFor="let medicament of item">
-          <td > Key: {{medicament.Cod_ATC}}, Value: {{medicament.value}} </td>
-        </tr>
-        //
-      </ng-container></div>
-
-  for( this.med in this.parsat ){
-  //console.log(this.parsat[this.med]);
-  console.log('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-  // @ts-ignore
-  for(this.key in this.parsat[this.med]){
-  console.log(this.key, this.parsat[this.med][this.key]);
-  // for( this.i in this.key)
-  // console.log(this.key[this.i]);
-  }
-  }});-->
-
-
-
-
-<!-- <span *ngFor="let item of test">-->
-<!--  Key:-->
-<!--</span>-->
- </div>
-
-    <!--
-<mat-list *ngFor="let item of results">
-  <mat-list-item role = "listitem">{{item.Cod_ATC}}</mat-list-item>
-</mat-list>--
   </div>
 
-  <mat-accordion *ngIf="results.length!==0">
-    <mat-list role="list" *ngFor="let item of results">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title class="titluri">
-            {{item.Contraindicatii}}
-
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </mat-list>
-  </mat-accordion>
-  </div>-->
-
-<!--  <footer>-->
-<!--    <app-footer></app-footer>-->
-<!--  </footer>-->
+  <footer>
+    <app-footer></app-footer>
+  </footer>
 
 </app-main-nav>
 

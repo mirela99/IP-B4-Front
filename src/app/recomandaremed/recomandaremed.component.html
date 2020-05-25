@@ -43,6 +43,51 @@
       </form>
     </mat-card>
 
+    <div *ngIf="parsatArray==='Setati filtrele pentru a afisa medicamente!'">
+      <p style="text-align: center; font-size: large; padding: 10px;">Completati toate campurile pentru a primi informatiile dorite!</p>
+    </div>
+
+    <div *ngIf="parsatArray==='Nu am gasit medicament pentru cerintele userului'">
+      <p>Nu sunt elemente..</p>
+    </div>
+    <div *ngIf="parsatArray==='Nu ati introdus informatiile cerute!'">
+      <p>Introduceti toate informatiile!</p>
+    </div>
+
+    <div style="margin-bottom: 150px;">
+      <mat-accordion *ngIf="parsatArray.length!==0" >
+        <mat-list role="list" *ngFor="let med of parsatArray">
+          <mat-expansion-panel >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{med.Denumire_comerciala}}
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <mat-list>
+              <p><b>Actiune terapeutica:</b>  {{med.Actiune_terapeutica}}</p>
+              <p><b>Substante active:</b>  {{med.Substante_active}}</p>
+              <p><b>Contraindicatii:</b>  {{med.Contraindicatii}}</p>
+              <p><b>Indicatii terapeutice:</b>  {{med.Indicatii_terapeutice}}</p>
+              <p><b>Pentru ce se utilizeaza:</b>  {{med.Pentru_ce_se_utilizeaza}}</p>
+              <p><b>Nu luati daca:</b>  {{med.Inainte_de_utilizare}}</p>
+              <p><b>Mod de administrare:</b>  {{med.Mod_de_administrare}}</p>
+              <p><b>Pastrarea medicamentului:</b>  {{med.Pastrare}}</p>
+
+            </mat-list>
+
+          </mat-expansion-panel>
+
+        </mat-list>
+      </mat-accordion>
+
+      <mat-card class="noResults" *ngIf="parsatArray.length===0" >
+        <p class="noResultsText">Ne pare rău, dar în acest moment nu există recomandări specifice problemei
+          dumneavoastră</p>
+      </mat-card>
+    </div>
+
+
 
   </div>
   <footer>
