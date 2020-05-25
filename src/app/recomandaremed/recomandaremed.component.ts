@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpParams} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: './app-recomandaremed',
@@ -8,33 +14,39 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
   styleUrls: ['./recomandaremed.component.css'],
 })
 
-export class RecomandaremedComponent {
-  constructor(private http: HttpClient) {
+export class RecomandaremedComponent implements OnInit {
+  constructor(private httpClient: HttpClient, private activeRoute: ActivatedRoute) {
   }
   url: 'https://medicationteam.herokuapp.com/recomandare_medicament_true';
   bodyPart;
+  simptome;
   simptoms = new FormControl();
   forms = new FormControl();
-  simptome;
   formatMed;
   simtomsList = [];
   parteaAleasa: string;
-  sAles: string[];
-  fAleasa: string[];
-  formatsMed = ['Picături' ,
-    'Gargarisme' ,
-    'Loţiune' ,
+  sAles: any;
+  fAleasa: any;
+  formatsMed = ['Picături',
+    'Gargarisme',
+    'Loţiune',
     'Comprimate'
     , 'Tablete'
     , 'Drajeuri'
-    , 'Capsule amilacee' ,
-    'Capsule gelatinoase' ,
-    'Pomadă' ,
-    'Unguent' ,
+    , 'Capsule amilacee',
+    'Capsule gelatinoase',
+    'Pomadă',
+    'Unguent',
     'Gel',
-    'Cremă' ,
-    'Pastă' ];
+    'Cremă',
+    'Pastă'];
+  private _parsatArray: any;
+  get parsatArray(): any {
+    return this._parsatArray;
+  }
 
+  med: any;
+  parsat: string;
   parts: any = [
     {
       partName: 'Ureche',
@@ -152,7 +164,6 @@ export class RecomandaremedComponent {
         'Disconfortul constant in zona buricului',
         'Durerea ascutita care porneste de la mijlocul abomenului superior si coboara spre partea dreapta, sub coaste',
         'Crampe in partea inferioara a abdomenului',
-        'Flatulenta',
         'Diaree',
         'Balonare',
         'Pierdere sau crestere in greutate'
@@ -162,7 +173,6 @@ export class RecomandaremedComponent {
     {
       partName: 'Rinichi',
       simtomsList: ['Oboseală accentuată',
-        'Mâncărimi ale pielii',
         'Inflamații la nivelul picioarelor și al gleznelor',
         'Retenția de apă',
         'Anemie',
@@ -267,20 +277,13 @@ export class RecomandaremedComponent {
       ]
     }
   ];
-  simptomAles = this.simptoms.value;
-  formaAleasa = this.forms.value;
-  zonaAleasa = this.bodyPart;
-  filtru = {
-    simptom: [],
-    forma: [],
-    zona: ''};
 
   simtomsChangeAction(i) {
     this.simptome = '';
     const dropDownData = this.parts.find((data: any) => data.partName === i);
     if (dropDownData) {
       this.simtomsList = dropDownData.simtomsList;
-      if (this.simtomsList){
+      if (this.simtomsList) {
         this.simptome = this.simtomsList[0];
       }
 
@@ -288,21 +291,32 @@ export class RecomandaremedComponent {
       this.simtomsList = [];
     }
   }
-  aplicareFiltru()
-  {
-    this.filtru.zona = this.parteaAleasa;
-    this.filtru.simptom = this.sAles;
-    this.filtru.forma = this.fAleasa;
-  }
-  cerereMedicament(){
-    this.aplicareFiltru();
-    const json = JSON.stringify(this.filtru);
-    console.log(json);
-    return this.http.post<any>(this.url,
-      { simptom: this.filtru.simptom, zona_corpului: this.filtru.zona, forma_farmaceutica: this.filtru.forma}).
-    subscribe(data => {console.log(data);  } );
 
+  preiaRezultate() {
+    const params = new HttpParams().set('zona_corpului', this.parteaAleasa)
+      .set('simptom', this.sAles)
+      .set('forma_farmaceutica', this.fAleasa);
+    console.log(params);
+    this.httpClient.get<any>('https://medicationteam.herokuapp.com/recomandare_medicament_true', {params})
+      .subscribe(data => {
+        this.parsat = data;
+        if (this.parsat !== 'Setati filtrele pentru a afisa medicamente!') {
+          console.log('parsat');
+          console.log(this.parsat);
+          this._parsatArray = Object.keys(this.parsat).map(i => this.parsat[i]);
+          console.log(this._parsatArray);
+          for (this.med in this._parsatArray) {
+            console.log(this._parsatArray[this.med]._id);
+          }
+        } else {
+          this._parsatArray = this.parsat;
+        }
+      });
   }
 
+  ngOnInit(): void {
+    this.preiaRezultate();
+  }
 
 }
+

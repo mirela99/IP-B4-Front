@@ -27,8 +27,7 @@ interface ATCGroup {
 export class MedicamenteComponent implements OnInit {
   constructor(private httpClient: HttpClient) {
   }
-
-  parsat: Array<{}>;
+  parsat: string;
   result: Object;
   response: object[];
   atcControl = new FormControl();
@@ -167,38 +166,11 @@ export class MedicamenteComponent implements OnInit {
   i: any;
   med: any;
   key: any;
+  private _parsatArray: any;
 
-
-  medicamenteLista = [];
-  public get results() {
-    return this.result;
+  get parsatArray(): any {
+    return this._parsatArray;
   }
-  public get parsatG()
-  {
-    return this.parsat;
-  }
-  /*    this.response = [...data];*/
-  /*
-  search() {
-    this.filtruMedicamente();
-    const json = JSON.stringify(this.filtru);
-    console.log(json);
-    console.log(this.subst);
-    //  console.log('test ' + this.response);
-    return this.httpClient.post( 'https://medicationteam.herokuapp.com/medicamente/filter',
-      {
-        stare: this.filtru.stare,
-        categorie: this.filtru.categorie,
-        codAtc: this.filtru.codATC,
-        popularitate: this.filtru.popularitate,
-        substanta: this.filtru.substanta,
-        ordine: this.filtru.ordine
-      }).subscribe(data => {
-      console.log(data);
-    });
-
-  }
-   */
   preiaRezultate2() {
     this.filtruMedicamente();
     const params = new HttpParams().set('stare', this.filtru.stare)
@@ -207,48 +179,23 @@ export class MedicamenteComponent implements OnInit {
       .set('popularitate', this.filtru.popularitate)
       .set('substanta', this.substanta)
       .set('ordine', this.filtru.ordine);
-    console.log('ce dracu faci?');
-    // this.http.get<any>('https://medicationteam.herokuapp.com/medicamente/filter_by_name/sanosan');
-    // console.log(this.result);
-    return (this.httpClient.get<any>('https://medicationteam.herokuapp.com/medicamente/filter', {params}))
-      .subscribe((returnedStuff) => {
+    this.httpClient.get<any>('https://medicationteam.herokuapp.com/medicamente/filter', {params})
+      .subscribe(returnedStuff => {
         this.parsat = returnedStuff;
-       //  this.parsat =JSON.parse(this.parsat);
-        // this.result = JSON.stringify(returnedStuff);
-        // if (typeof this.result === 'string') {
-        //     this.parsat = JSON.parse(this.result);
-        //   }
-        this.afiseaza();
-        for ( this.med in this.parsat ){
-          // console.log(this.med._id);
-
-          console.log(this.parsat[this.med]);
-          console.log('daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-          // this.afiseaza();
-          // console.log(this.parsat[this.med]._id)
-          // @ts-ignore
-          for (this.key in this.parsat[this.med]){
-
-            //  console.log(this.key, this.parsat[this.med][this.key]);
-            // for( this.i in this.key)
-            // console.log(this.key[this.i]);
-          }
-        }});
+        if (this.parsat !== 'Setati filtrele pentru a afisa medicamente!'){
+        console.log('parsat');
+        console.log(this.parsat);
+        this._parsatArray = Object.keys(this.parsat).map(i => this.parsat[i]);
+        console.log(this._parsatArray);
+        for (this.med in this._parsatArray ) {
+          console.log(this._parsatArray[this.med]);
+  }}
+    else { this._parsatArray = this.parsat; }});
   }
-  afiseaza()
-  {
-    console.log(this.parsat);
+ 
 
-  }
-  /*
-  preiaRezultate2()
-  {
-    return (this.httpClient.get('https://medicationteam.herokuapp.com/medicamente/filter_by_name/sanosan'))
-      .subscribe((returnedStuff) => {
-        console.log(returnedStuff);
-      });
-  }*/
   ngOnInit(): void {
+    this.preiaRezultate2();
   }
 
   filtruMedicamente() {
@@ -324,5 +271,4 @@ export class MedicamenteComponent implements OnInit {
   }
 
 }
-
 
