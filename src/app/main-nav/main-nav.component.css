@@ -15,10 +15,11 @@
   top: 0;
   z-index: 1;
 }
-.hidden{
+/* .hidden{
   display:none;
 
 }
+*/
 .spacer{
   flex: 1 1 auto;
 }
@@ -29,8 +30,8 @@ mat-toolbar a{
   text-decoration: none;
 
 }
-@media (max-width: 800px) {
-  mat-toolbar a{
-    display:none;
+@media (max-width: 930px) {
+  .hide {
+    display: none;
   }
 }
