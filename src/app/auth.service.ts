@@ -7,16 +7,20 @@ import { tokenName } from '@angular/compiler';
 })
 export class AuthTokenService {
   readonly ROOT_URL;
-  constructor(private http: HttpClient) {
-    this.ROOT_URL = 'https://auth-service-ip.herokuapp.com';
+  constructor(private http:HttpClient) { 
+    this.ROOT_URL="https://auth-service-ip.herokuapp.com";
   }
 
-  private get(uri: string){
-    return this.http.get(this.ROOT_URL + '/' + uri);
+  private get(uri:String){
+    return this.http.get(this.ROOT_URL+'/'+uri);
    }
 
-  keepLoggedIn(username: string){
-          localStorage.setItem('username', username);
-          console.log(localStorage.getItem('username'));
+  keepLoggedIn(username:String){
+      this.get('login/'+username).subscribe(
+        (token:{token:string})=>{
+          localStorage.setItem('loginToken',token.token);
+          console.log(localStorage.getItem('loginToken'));
+        }
+      );
   }
 }
