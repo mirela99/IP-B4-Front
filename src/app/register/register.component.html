@@ -18,18 +18,24 @@
                             <div class="form-container">
                                 <mat-form-field>
                                     <input id="email" matInput formControlName="email" [(ngModel)]="user.email" placeholder="Email" />
+                                    <mat-error *ngIf="registerForm.get('email').hasError('required') && (registerForm.get('email').dirty || registerForm.get('email').touched)">Enter a valid e-mail adress</mat-error>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <input id="username" matInput formControlName="username" [(ngModel)]="user.username" placeholder="Username" />
+                                    <mat-error *ngIf="registerForm.get('username').hasError('required') && (registerForm.get('username').dirty || registerForm.get('username').touched)">Enter a valid username</mat-error>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <input id="password" matInput formControlName="password" [(ngModel)]="user.password" placeholder="Password" [type]="hide ? 'password':'text'" />
+                                    <mat-error *ngIf="registerForm.get('password').hasError('minlength') && (registerForm.get('password').dirty || registerForm.get('password').touched)">Password is too short</mat-error>
+                                    <mat-error *ngIf="registerForm.get('password').hasError('maxlength') && (registerForm.get('password').dirty || registerForm.get('password').touched)">Password is too long</mat-error>
+                                    <mat-error *ngIf="registerForm.get('password').hasError('required') && (registerForm.get('password').dirty || registerForm.get('password').touched)">Enter a valid password</mat-error>
                                     <mat-icon matSuffix (click)="hide = !hide">
                                         {{hide ? 'visibility' : 'visibility_off'}}
                                     </mat-icon>
                                 </mat-form-field>
                                 <mat-form-field>
                                     <input id="cpassword" matInput formControlName="cpassword" [(ngModel)]="user.cpassword" placeholder="Confirm Password" [type]="hide ? 'password':'text'" />
+                                    <mat-error *ngIf="registerForm.get('cpassword').hasError('notSame')">Passwords do not match!</mat-error>
                                     <mat-icon matSuffix (click)="hide = !hide">
                                         {{hide ? 'visibility' : 'visibility_off'}}
                                     </mat-icon>

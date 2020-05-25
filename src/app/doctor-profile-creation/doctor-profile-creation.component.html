@@ -16,16 +16,19 @@
                                     <mat-form-field class="first">
                                         <mat-label>Nume</mat-label>
                                         <input matInput id="name" formControlName="name" [(ngModel)]="user.name" placeholder="Nume" />
+                                        <mat-error *ngIf="profileForm.get('name').hasError('required') && (profileForm.get('name').dirty || profileForm.get('name').touched)">Introduceti numele de familie</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>
                                         <mat-label>Prenume</mat-label>
                                         <input matInput id="surname" formControlName="surname" [(ngModel)]="user.surname" placeholder="Prenume" />
+                                        <mat-error *ngIf="profileForm.get('surname').hasError('required') && (profileForm.get('surname').dirty || profileForm.get('surname').touched)">Introduceti prenumele</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>
                                         <mat-label>Județ</mat-label>
                                         <input matInput id="county" formControlName="county" [(ngModel)]="user.county" placeholder="Județ" />
+                                        <mat-error *ngIf="profileForm.get('county').hasError('required') && (profileForm.get('county').dirty || profileForm.get('county').touched)">Introduceti judetul</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>
@@ -51,11 +54,13 @@
                                     <mat-form-field class="first">
                                         <mat-label>Strada</mat-label>
                                         <input matInput id="street" formControlName="street" [(ngModel)]="user.street" placeholder="Strada" />
+                                        <mat-error *ngIf="profileForm.get('street').hasError('required') && (profileForm.get('street').dirty || profileForm.get('street').touched)">Numele strazii</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>
                                         <mat-label>Numărul</mat-label>
                                         <input matInput id="number" formControlName="number" [(ngModel)]="user.number" placeholder="Numărul" />
+                                        <mat-error *ngIf="profileForm.get('number').hasError('required') && (profileForm.get('number').dirty || profileForm.get('number').touched)">Numarul imobilului</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>
@@ -71,6 +76,7 @@
                                     <mat-form-field>
                                         <mat-label>Vârsta</mat-label>
                                         <input matInput id="age" formControlName="age" [(ngModel)]="user.age" placeholder="Vârsta" />
+                                        <mat-error *ngIf="profileForm.get('age').hasError('required') && (profileForm.get('age').dirty || profileForm.get('age').touched)">Introduceti varsta</mat-error>
                                     </mat-form-field>
 
                                     <mat-form-field>

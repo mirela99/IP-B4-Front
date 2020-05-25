@@ -81,6 +81,9 @@ import {ImageFormComponent} from './imageForm';
 import {ResultComponent} from './result/result.component';
 import {QuizComponent} from './quiz-component/quiz.component';
 import {NotificationComponent} from './notification/notification.component';
+import { ExpiratComponent } from './expirat';
+import { SuccesComponent } from './succes';
+import { AlreadyauthComponent } from './alreadyauth/alreadyauth.component';
 
 const config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -128,7 +131,10 @@ enableProdMode();
     OrarMedicComponent,
     SpecificDoctorComponent,
     QuizComponent,
-    NotificationComponent
+    NotificationComponent,
+    ExpiratComponent,
+    SuccesComponent,
+    AlreadyauthComponent
 
   ],
   imports: [

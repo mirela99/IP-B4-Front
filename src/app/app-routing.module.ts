@@ -24,6 +24,9 @@ import {ImageFormComponent} from './imageForm/imageForm.component';
 import {ResultComponent} from './result/result.component';
 import {QuizComponent} from './quiz-component/quiz.component';
 import {NotificationComponent} from './notification/notification.component';
+import { ExpiratComponent } from './expirat';
+import { SuccesComponent } from './succes';
+import { AlreadyauthComponent } from './alreadyauth/alreadyauth.component';
 
 
 const routes: Routes = [
@@ -52,7 +55,10 @@ const routes: Routes = [
   {path: 'result', component: ResultComponent},
   {path: 'quiz', component: QuizComponent },
   {path: 'notification', component: NotificationComponent },
-  {path: '**', component: PageNotFoundComponent}
+  {path: '**', component: PageNotFoundComponent},
+  { path: 'regSucces',component: SuccesComponent},
+  { path: 'confirmationExp',component: ExpiratComponent},
+  { path: 'alreadyAuth',component: AlreadyauthComponent}
 ];
 
 @NgModule({

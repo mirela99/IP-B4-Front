@@ -1,3 +1,4 @@
+  
 import { Component, OnInit } from '@angular/core';
 import { RecoveryModel } from '../_models/recovery.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -25,11 +26,10 @@ export class RecuperareComponent implements OnInit {
     this.database.getUserByEmail(this.user.email).subscribe(
         (user:User)=>{
             if (user != null){
-                alert(this.user.email);
                 this.database.passRecover(this.user.email).subscribe();
             }
-            else
-                alert("Email incorect!");
+            //else
+              //  alert("Email incorect!");
         }
     );
   }
