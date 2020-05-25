@@ -70,6 +70,50 @@ mat-card {
     margin-top: 10px;
 }
 
+html,
+body {
+    height: 100%;
+}
+
+.login {
+    background-image: url('https://www.itl.cat/pngfile/big/12-127212_medical-doctor-wallpaper-hd-pc-medical-doctor-wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.medium-list {
+    width: 600px;
+    padding: 10px;
+}
+
+.list-viewer-wrapper {
+    background-color: #FFF;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, .03);
+    border-radius: 3px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .24), 0 0 2px rgba(0, 0, 0, .12);
+    min-height: 600px;
+    margin: 4px;
+}
+
+.list-header-title {
+    color: rgba(0, 0, 0, .54);
+    background: rgba(0, 0, 0, .03);
+    padding: 8px 20px;
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
 .divider {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
@@ -78,6 +122,7 @@ mat-card {
 .loginBtn {
     box-sizing: border-box;
     position: relative;
+    /* width: 13em;  - apply for fixed size */
     margin: 0.2em;
     padding: 0 15px 0 46px;
     border: none;
